@@ -7,6 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCG1WzfbvZMMOUNGfUK6ISOY6NAfd06Cfw",
+    authDomain: "hooukas-48823.firebaseapp.com",
+    databaseURL: "https://hooukas-48823.firebaseio.com",
+    projectId: "hooukas-48823",
+    storageBucket: "hooukas-48823.appspot.com",
+    messagingSenderId: "261288853888",
+    appId: "1:261288853888:web:b6940185c9d4f2d0e88165",
+    measurementId: "G-JRB1QK08K1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 <body>
   <app-root></app-root>
 </body>

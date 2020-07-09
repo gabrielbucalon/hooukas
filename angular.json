@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "hooukas"
+    }
+  },
+  "defaultProject": "hooukas",
+  "cli": {
+    "analytics": "e79642c7-3053-4e8f-ac83-0225d0dbb6f7"
+  }
 }
