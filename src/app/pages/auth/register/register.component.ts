@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from 'src/app/shared/card/model/Card';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  card: Card;
+  constructor() {
+    this.card = {
+      style: {
+        backgroundColor: "#f0ad4e",
+        heigth: "100vh",
+        witdh: "50vh"
+      },
+      title: 'Registra-se',
+      subtitle: ':D'
+    }
   }
+
+  ngOnInit(): void {}
 
 }
