@@ -2,68 +2,80 @@
 
   <app-card [card]="card">
     <mat-divider></mat-divider>
-    <form class="background__form-register">
+    <form [formGroup]="form" (ngSubmit)="submitForm()" class="background__form-register">
       <p class="background__form-register--fields">
 
         <mat-form-field appearance="outline">
           <mat-label>E-mail</mat-label>
-          <input name="email" type="email" matInput placeholder="Placeholder">
+          <input formControlName="email" type="email" matInput placeholder="Placeholder" alt="E-mail">
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint>exemplo</mat-hint>
+          <mat-hint *ngIf="!f.email.touched"> <strong>Exemplo: </strong> jose@gmail.com </mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.email.touched && f.email.invalid">E-mail inválido</mat-hint>
         </mat-form-field>
+
 
         <mat-form-field appearance="outline">
           <mat-label>Senha</mat-label>
-          <input name="password" type="password" matInput placeholder="Placeholder">
+          <input formControlName="password" name="password" type="password" matInput placeholder="Placeholder" alt="Senha">
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint><strong> Exemplo: </strong> 1234@teste</mat-hint>
+          <mat-hint *ngIf="!f.password.touched" ><strong> Exemplo: </strong> 1234@teste</mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.password.touched && f.password.invalid">Senha inválida</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>CEP</mat-label>
-          <input type="text" name="zipcode" matInput placeholder="Placeholder">
+          <input formControlName="zipcode" type="text" name="zipcode" matInput placeholder="Placeholder" alt="CEP">
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint> <strong> Exemplo: </strong> 00000-000</mat-hint>
+          <mat-hint *ngIf="!f.zipcode.touched"> <strong> Exemplo: </strong> 00000000</mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.zipcode.touched && f.zipcode.invalid">CEP inválido</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Endereço</mat-label>
-          <input type="text" name="anddress" matInput placeholder="Placeholder">
+          <input formControlName="address" type="text" name="address" matInput placeholder="Placeholder" alt="Endereço">
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint> <strong> Exemplo: </strong> Rua antiga 13 </mat-hint>
+          <mat-hint *ngIf="!f.address.touched"> <strong> Exemplo: </strong> Rua antiga 13 </mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.address.touched && f.address.invalid">Endereço inválido</mat-hint>
+
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Bairro</mat-label>
-          <input type="text" name="neighborhood" matInput placeholder="Placeholder">
+          <input formControlName="neighborhood" type="text" name="neighborhood" matInput placeholder="Placeholder" alt="Bairro">
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint> <strong> Exemplo: </strong> Jd. Adelaide</mat-hint>
+          <mat-hint *ngIf="!f.neighborhood.touched"> <strong> Exemplo: </strong> Jd. Adelaide</mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.neighborhood.touched && f.neighborhood.invalid">Bairro inválido</mat-hint>
+
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Cidade</mat-label>
-          <input type="text" name="city" matInput placeholder="Placeholder">
+          <input formControlName="city" type="text" name="city" matInput placeholder="Placeholder" alt="Cidade">
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint> <strong> Exemplo: </strong> São Paulo</mat-hint>
+          <mat-hint *ngIf="!f.city.touched"> <strong> Exemplo: </strong> São Paulo</mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.city.touched && f.city.invalid">Cidade inválido</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>N°</mat-label>
-          <input type="number" name="number" matInput placeholder="Placeholder">
+          <input formControlName="number" type="number" name="number" matInput placeholder="Placeholder" alt="Número">
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint> <strong> Exemplo: </strong> 12</mat-hint>
+          <mat-hint *ngIf="!f.number.touched"> <strong> Exemplo: </strong> 42</mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.number.touched && f.number.invalid">Número inválido</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Complemento</mat-label>
-          <input type="text" name="complement" matInput placeholder="Placeholder">
+          <input formControlName="complement" type="text" name="complement" matInput placeholder="Placeholder" alt="Complemento">
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint> <strong> Exemplo: </strong> Casa/apt bloco 2 </mat-hint>
+          <mat-hint *ngIf="!f.complement.touched"> <strong> Exemplo: </strong> Casa/apt bloco 2 </mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.complement.touched && f.complement.invalid">Complemento inválido</mat-hint>
+
         </mat-form-field>
       </p>
 
       <div class="background__footer-btns">
-        <button mat-button class="background__footer-btns--btn-create-account" color="primary">Cadastrar</button>
+        <button mat-button class="background__footer-btns--btn-create-account" [disabled]="!form.valid" color="primary">Cadastrar</button>
         <button mat-button class="background__footer-btns--btn-back-page" color="warn">Voltar</button>
       </div>
     </form>

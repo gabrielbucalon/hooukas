@@ -1,0 +1,13 @@
+.message-fields{
+  &--error{
+    color: red;
+  }
+
+  &--sucess{
+    color: green;
+  }
+
+  &--warning{
+    color: yellow;
+  }
+}
