@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { Address } from '../model/User';
 import { MessageComponent } from 'src/app/shared/message/message.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-register',
@@ -32,7 +33,11 @@ export class RegisterComponent extends MessageComponent {
     });
   }
 
-  constructor(private fb: FormBuilder, private authService: AuthService, _snackBar: MatSnackBar) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private fb: FormBuilder,
+    private authService: AuthService,
+     _snackBar: MatSnackBar) {
     super(_snackBar);
     this.card = this.initializeCard();
     this.loading = false;
@@ -73,12 +78,14 @@ export class RegisterComponent extends MessageComponent {
 
 
   submitForm() {
-    debugger;
-    this.form;
     try {
-
-    } catch (error) {
-
+      const result = this.afAuth.auth.signInWithEmailAndPassword(this.form.get('email').value, this.form.get('password').value);
+      if (result) {
+        this.openSnackBar("bom dia corno ", "BLZ", 5000);
+        // this.navCtrl.setRoot('HomePage');
+      }
+    } catch (e) {
+      console.error(e);
     }
   }
 
