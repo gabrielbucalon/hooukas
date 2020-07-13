@@ -8,7 +8,7 @@ export interface Card  {
 
 
 export interface Style {
-  backgroundColor: string | "#f0ad4e" ;
-  witdh: "100%" | string;
-  heigth: string;
+  backgroundColor?: string | "#f0ad4e" ;
+  width?: "100%" | string;
+  height?: string;
 }

@@ -1,10 +1,33 @@
-.background{
+.background {
   height: 100%;
   width: 100%;
-	background-image: url('https://us.123rf.com/450wm/alxyzt/alxyzt1712/alxyzt171200042/90996098-seamless-pattern-of-burgers-background-for-fast-food-packing-poster-.jpg?ver=6');
-}
+  background-image: url("https://us.123rf.com/450wm/alxyzt/alxyzt1712/alxyzt171200042/90996098-seamless-pattern-of-burgers-background-for-fast-food-packing-poster-.jpg?ver=6");
+  display: flex;
+  justify-content: center;
 
+  &__form-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-mat-card{
-  width: 10px!important;
+    &--fields{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__footer-btns{
+    &--btn-create-account{
+      margin-right: 1em;
+      border: 1px solid #795548;
+      color: #795548;
+    }
+
+    &--btn-back-page{
+      border: 1px solid #ca582f;
+      color: #ca582f;
+    }
+  }
+
 }

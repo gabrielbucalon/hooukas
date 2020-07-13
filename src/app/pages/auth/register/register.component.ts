@@ -12,12 +12,9 @@ export class RegisterComponent implements OnInit {
   constructor() {
     this.card = {
       style: {
-        backgroundColor: "#f0ad4e",
-        heigth: "100vh",
-        witdh: "50vh"
+        backgroundColor: "#f0ad4e"
       },
-      title: 'Registra-se',
-      subtitle: ':D'
+      title: 'Registra-se'
     }
   }
 

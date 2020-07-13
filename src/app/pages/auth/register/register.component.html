@@ -1,17 +1,71 @@
 <main class="background">
 
   <app-card [card]="card">
-    <p>teste</p>
     <mat-divider></mat-divider>
-    <form>
-      <p>
+    <form class="background__form-register">
+      <p class="background__form-register--fields">
+
         <mat-form-field appearance="outline">
-          <mat-label>Outline form field</mat-label>
-          <input matInput placeholder="Placeholder">
+          <mat-label>E-mail</mat-label>
+          <input name="email" type="email" matInput placeholder="Placeholder">
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint>Hint</mat-hint>
+          <mat-hint>exemplo</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input name="password" type="password" matInput placeholder="Placeholder">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          <mat-hint><strong> Exemplo: </strong> 1234@teste</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>CEP</mat-label>
+          <input type="text" name="zipcode" matInput placeholder="Placeholder">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          <mat-hint> <strong> Exemplo: </strong> 00000-000</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Endereço</mat-label>
+          <input type="text" name="anddress" matInput placeholder="Placeholder">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          <mat-hint> <strong> Exemplo: </strong> Rua antiga 13 </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Bairro</mat-label>
+          <input type="text" name="neighborhood" matInput placeholder="Placeholder">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          <mat-hint> <strong> Exemplo: </strong> Jd. Adelaide</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Cidade</mat-label>
+          <input type="text" name="city" matInput placeholder="Placeholder">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          <mat-hint> <strong> Exemplo: </strong> São Paulo</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>N°</mat-label>
+          <input type="number" name="number" matInput placeholder="Placeholder">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          <mat-hint> <strong> Exemplo: </strong> 12</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Complemento</mat-label>
+          <input type="text" name="complement" matInput placeholder="Placeholder">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          <mat-hint> <strong> Exemplo: </strong> Casa/apt bloco 2 </mat-hint>
         </mat-form-field>
       </p>
+
+      <div class="background__footer-btns">
+        <button mat-button class="background__footer-btns--btn-create-account" color="primary">Cadastrar</button>
+        <button mat-button class="background__footer-btns--btn-back-page" color="warn">Voltar</button>
+      </div>
     </form>
   </app-card>
 </main>
