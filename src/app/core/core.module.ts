@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthGuard } from './guard/guard.guard';
+import { AuthGuard } from './guard/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './interceptor/interceptor.interceptor';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
 
