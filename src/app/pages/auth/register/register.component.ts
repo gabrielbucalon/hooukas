@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from 'src/app/shared/card/model/Card';
+import { Card } from '@/shared/card/model/Card';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
-import { Address } from '../model/User';
+import { AuthService } from '@/pages/auth/services/auth.service';
+import { Address } from '@/pages/auth/model/User';
 import { MessageComponent } from 'src/app/shared/message/message.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFireAuth } from 'angularfire2/auth';
