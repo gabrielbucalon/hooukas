@@ -7,7 +7,7 @@ export interface User {
 
 export interface Address {
   cep: string,
-  logradouro:string,
+  logradouro: string,
   complemento: string,
   bairro: string,
   localidade: string,
