@@ -17,26 +17,36 @@ export class AuthService {
   constructor(private http: HttpClient, public afAuth: AngularFireAuth, private firestore: AngularFirestore) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
-   }
+  }
 
-   public get currentUserValue(): User {
+  public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
 
-  signupUser(userParams: User, email: string, password: string){
+  async signupUser(userParams: User, email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(() => {
       return this.afAuth.auth.signInWithEmailAndPassword(email, password).then((authUser) => {
         userParams.uid = authUser.user.uid;
-        this.saveUserFirebase(userParams);
+        this.saveUser(userParams);
       });
     });
   }
 
-  async saveUserFirebase(user: User){
+  async saveUser(user: User) {
     return this.firestore.collection('users').add(user).then(() => {
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
     });
+  }
+
+
+  getUser(): Observable<any> {
+    return this.firestore.collection('users').snapshotChanges();
+  }
+
+  deleteUser(user: User) {
+    delete user.uid;
+    this.firestore.doc('policies/' + user.uid).update(user);
   }
 
 
