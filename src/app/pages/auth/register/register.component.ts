@@ -21,13 +21,9 @@ export class RegisterComponent extends MessageComponent {
   loading: boolean;
   user: User;
 
-  currentUser: User;
-  private _subscription: Subscription;
-
 
   ngOnInit() {
     this.createForm();
-    this.authService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
     this.f.zipcode.valueChanges.subscribe(async (zipcode: string) => {
       if (zipcode.length >= 8) {
         this.loading = true;
@@ -36,10 +32,6 @@ export class RegisterComponent extends MessageComponent {
       }
     });
   }
-
-  // ngOnDestroy(): void {
-  //   this._subscription.unsubscribe();
-  // }
 
   constructor(
     private router: Router,
