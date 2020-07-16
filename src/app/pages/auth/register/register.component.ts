@@ -5,7 +5,7 @@ import { AuthService } from '@/pages/auth/services/auth.service';
 import { Address } from '@/pages/auth/model/User';
 import { MessageComponent } from 'src/app/shared/message/message.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +19,15 @@ export class RegisterComponent extends MessageComponent {
   textField: string;
   loading: boolean;
 
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService,
+     _snackBar: MatSnackBar) {
+    super(_snackBar);
+    this.card = this.initializeCard();
+    this.loading = false;
+  }
 
 
   ngOnInit() {
@@ -33,22 +42,13 @@ export class RegisterComponent extends MessageComponent {
     });
   }
 
-  constructor(
-    private afAuth: AngularFireAuth,
-    private fb: FormBuilder,
-    private authService: AuthService,
-     _snackBar: MatSnackBar) {
-    super(_snackBar);
-    this.card = this.initializeCard();
-    this.loading = false;
-  }
+
 
 
   validateZipCode(zipcode: string) {
     const zipCode = zipcode;
 
     this.authService.getAddress(zipCode).subscribe(async (address: Address) => {
-      debugger;
       if (!address.erro && address) {
         this.f.address.patchValue(address.logradouro);
         this.f.neighborhood.patchValue(address.bairro);
@@ -56,7 +56,6 @@ export class RegisterComponent extends MessageComponent {
         this.f.uf.patchValue(address.uf);
         await  this.openSnackBar("Ao colocar seu CEP, encontramos seu bairro, cidade etc. \n Apenas coloque informações que faltam no endereço :)", "OK", 10000);
       } else {
-        // debugger;
         this.openSnackBar("Não encontramos o CEP. Tente novamente!", "OK", 2000);
       }
     });
@@ -78,15 +77,23 @@ export class RegisterComponent extends MessageComponent {
 
 
   submitForm() {
+
+       // const result = this.afAuth.auth.signInWithEmailAndPassword(this.form.get('email').value, this.form.get('password').value);
+      // if (result) {
+      //   this.openSnackBar("bom dia corno ", "BLZ", 5000);
+      //   // this.navCtrl.setRoot('HomePage');
+      // }
+
     try {
-      const result = this.afAuth.auth.signInWithEmailAndPassword(this.form.get('email').value, this.form.get('password').value);
-      if (result) {
-        this.openSnackBar("bom dia corno ", "BLZ", 5000);
-        // this.navCtrl.setRoot('HomePage');
-      }
+      this.authService.signupUser(this.form.value).then(async () => {
+        this.loading = true;
+        this.router.navigateByUrl('/home');
+        this.loading = false;
+      });
     } catch (e) {
       console.error(e);
     }
+
   }
 
   createForm() {
