@@ -13,9 +13,9 @@ export interface Address {
   bairro: string;
   localidade: string;
   uf: string;
-  unidade: string;
-  ibge: number;
-  gia: number;
+  unidade?: string;
+  ibge?: number;
+  gia?: number;
   erro?: boolean;
 };
 
