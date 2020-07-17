@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 
@@ -28,7 +30,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     ReactiveFormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireModule,
+    AngularFirestoreModule
   ],
   providers: [
     AuthService
