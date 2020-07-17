@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '@/shared/services/products/products.service';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  products: any;
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts(){
+    this.productsService.getAllProducts().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(products => {
+      debugger;
+      this.products = products;
+    });
   }
 
 }

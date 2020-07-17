@@ -4,6 +4,8 @@ import { CardComponent } from './card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MessageComponent } from './message/message.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ProductsService } from './services/products/products.service';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 
 @NgModule({
@@ -11,7 +13,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AngularFireDatabaseModule
+  ],
+  providers: [
+    ProductsService
   ],
   exports: [CardComponent, MessageComponent]
 })
