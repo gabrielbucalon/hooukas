@@ -9,6 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HomeModule } from './pages/home/home.module';
 import { LayoutModule } from './layout/layout.module';
+import { CoreModule } from './core/core.module';
 
 
 export const firebaseConfig = {
@@ -34,7 +35,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     HomeModule,
-    LayoutModule
+    LayoutModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

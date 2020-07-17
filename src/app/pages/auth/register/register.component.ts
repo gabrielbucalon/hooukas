@@ -38,9 +38,14 @@ export class RegisterComponent extends MessageComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     _snackBar: MatSnackBar) {
+
     super(_snackBar);
+    if(this.authService.currentUserValue){
+      this.router.navigate(['/']);
+    }
     this.card = this.initializeCard();
     this.loading = false;
+
   }
 
   validateZipCode(zipcode: string) {
@@ -99,7 +104,6 @@ export class RegisterComponent extends MessageComponent {
       this.authService.signupUser(this.user, this.f.email.value, this.f.password.value).then(async () => {
         this.loading = true;
         this.openSnackBar(`Usuário criado com sucesso \nSeja bem-vindo(a) :D`, "OK", 5000);
-        this.router.navigateByUrl('/home');
         this.loading = false;
       });
     } catch (e) {
