@@ -12,8 +12,6 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'hooukas';
 
-
-
   currentUser: User;
   private _subscription: Subscription
 
@@ -33,6 +31,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logout() {
     this._authenticationService.logout();
-    this._router.navigate(['']);
+    this._router.navigate(['/register']);
   }
 }
