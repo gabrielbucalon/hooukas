@@ -9,7 +9,7 @@ import { Products } from '@/shared/models/Products';
   providedIn: 'root'
 })
 export class ProductsService {
-  private dbPath: string = "/products";
+  private dbPath: string = "products";
   productsRef: AngularFireList<Products> = null;
   constructor(private firestore: AngularFirestore, private db: AngularFireDatabase) {
    this.productsRef = db.list(this.dbPath);
@@ -29,6 +29,7 @@ export class ProductsService {
   }
 
   getAllProducts(): AngularFireList<Products>{
+    console.log(this.productsRef);
     return this.productsRef;
   }
 
