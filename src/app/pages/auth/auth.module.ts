@@ -6,7 +6,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { AuthService } from '@/pages/auth/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +25,6 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatGridListModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,

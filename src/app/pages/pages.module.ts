@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@/shared/shared.module';
 import { AuthModule } from '@/pages/auth/auth.module';
+import { ProductsModule } from './products/products.module';
 
 
 
@@ -10,7 +11,8 @@ import { AuthModule } from '@/pages/auth/auth.module';
   imports: [
     CommonModule,
     SharedModule,
-    AuthModule
+    AuthModule,
+    ProductsModule
   ]
 })
 export class PagesModule { }
