@@ -10,6 +10,10 @@
     flex-direction: row;
     flex-wrap: wrap;
 
+    &--cupom-form{
+      display: flex;
+    }
+
     &--price{
       width: $width-pattern-field;
     }
@@ -53,6 +57,8 @@
     justify-content: flex-start;
 
     &--title-modal{
+      color: $secondary-light-color;
+      font-weight: 500;
       margin-right: 0.4em;
     }
 
