@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
         )
       )
     ).subscribe(products => {
-      debugger;
       this.products = products;
     });
   }
