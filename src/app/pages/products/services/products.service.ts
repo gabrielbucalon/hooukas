@@ -5,5 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class ProductsService {
 
+
+  createProduct(){
+
+  }
+
+  getAll(){
+
+  }
+
   constructor() { }
 }
