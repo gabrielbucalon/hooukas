@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateEditComponent } from '../products/create-edit/create-edit.component';
+import { ProductsService } from '@/shared/services/products/products.service';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-home',
@@ -9,9 +12,24 @@ import { CreateEditComponent } from '../products/create-edit/create-edit.compone
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  products: any;
+  constructor(public dialog: MatDialog, private productsService: ProductsService) { }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts(){
+    this.productsService.getAllProducts().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(products => {
+      debugger;
+      this.products = products;
+    });
   }
 
   modalCreateProducts(){

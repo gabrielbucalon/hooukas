@@ -1,0 +1,16 @@
+{
+  "products": {
+    "hamburger": {
+      "title": "Hamburguer",
+      "icon": "icon",
+      "items": [
+        {"cupom": "odjifas", "description": {
+          "alface": true,
+          "bacon": true,
+          "hamburguer": true,
+          "pimentao": true
+        }, "image": ["img", "img", "img"], "price": 29.99, "title": "cryspin" }
+      ]
+    }
+  }
+}
