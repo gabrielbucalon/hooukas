@@ -1,0 +1,7 @@
+$width-pattern-field: 15em;
+
+@mixin field-product {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

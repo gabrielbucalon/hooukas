@@ -15,7 +15,10 @@ export class HomeComponent implements OnInit {
   }
 
   modalCreateProducts(){
-    const dialogRef = this.dialog.open(CreateEditComponent);
+    const dialogRef = this.dialog.open(CreateEditComponent, {
+      width: "100vh",
+      height: "auto"
+    });
   }
 
 }

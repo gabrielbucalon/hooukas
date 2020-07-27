@@ -2,9 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateEditComponent } from './create-edit/create-edit.component';
 import { ListComponent } from './list/list.component';
-import { MatFormFieldModule, MatHint } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -14,7 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatHint
+    MatIconModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 export class ProductsModule { }

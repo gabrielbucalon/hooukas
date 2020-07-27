@@ -1,0 +1,62 @@
+@import "src/assets/styles/fields.scss";
+@import "src/assets/styles/colors.scss";
+
+.modal{
+  &__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &--price{
+      width: $width-pattern-field;
+    }
+
+    &--title{
+      width: $width-pattern-field;
+    }
+
+    &--description{
+      width: $width-pattern-field;
+    }
+
+    &--code-cupom{
+      width: $width-pattern-field;
+    }
+
+    &--price-discount{
+      width: $width-pattern-field;
+    }
+
+    &--manage-checkbox{
+      @include field-product;
+    }
+
+    &--snacks{
+      @include field-product;
+    }
+
+    &--manager-btns{
+      @include field-product;
+      margin-top: 2em;
+      &--save{
+        margin-right: 0.4em;
+      }
+    }
+
+  }
+
+  &__header{
+    display: flex;
+    justify-content: flex-start;
+
+    &--title-modal{
+      margin-right: 0.4em;
+    }
+
+    &--icon-food{
+      color: $secondary-color;
+    }
+  }
+}
