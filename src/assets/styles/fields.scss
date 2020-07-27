@@ -5,3 +5,11 @@ $width-pattern-field: 15em;
   justify-content: center;
   width: 100%;
 }
+
+@mixin row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}

@@ -2,67 +2,62 @@
 @import "src/assets/styles/colors.scss";
 @import "src/assets/base.scss";
 
-.modal{
-  &__content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+.modal {
+  &__content {
+    @include row;
 
-    &--cupom-form{
-      display: flex;
+    &--cupom-form {
+      @include row;
     }
 
-    &--price{
+    &--price {
       width: $width-pattern-field;
     }
 
-    &--title{
+    &--title {
       width: $width-pattern-field;
     }
 
-    &--description{
+    &--description {
       width: $width-pattern-field;
     }
 
-    &--code-cupom{
+    &--code-cupom {
       width: $width-pattern-field;
     }
 
-    &--price-discount{
+    &--price-discount {
       width: $width-pattern-field;
     }
 
-    &--manage-checkbox{
+    &--manage-checkbox {
       @include field-product;
     }
 
-    &--snacks{
+    &--snacks {
       @include field-product;
     }
 
-    &--manager-btns{
+    &--manager-btns {
       @include field-product;
       margin-top: 2em;
-      &--save{
+      &--save {
         margin-right: 0.4em;
       }
     }
-
   }
 
-  &__header{
+  &__header {
     display: flex;
     justify-content: flex-start;
 
-    &--title-modal{
+    &--title-modal {
       color: $secondary-light-color;
       font-weight: 500;
       margin-right: 0.4em;
     }
 
-    &--icon-food{
+    &--icon-food {
       color: $secondary-color;
     }
   }
