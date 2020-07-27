@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-create-edit',
@@ -8,46 +9,52 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateEditComponent implements OnInit {
   form: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private productService: ProductsService) { }
 
 
   ngOnInit(): void {
     this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.form = this.fb.group({
       title: ["", Validators.required],
       description: ["", Validators.required],
       price: ["", Validators.required],
       imgs: this.fb.array([]),
       cupomForm: this.fb.group({
-        codeCupom: [{value: "", disabled: true}, Validators.required],
-        priceDiscount: [{value: "", disabled: true}, Validators.required]
+        codeCupom: [{ value: "", disabled: true }, Validators.required],
+        priceDiscount: [{ value: "", disabled: true }, Validators.required]
       }),
     });
   }
 
-  manageFieldsCupom(check: boolean){
+  manageFieldsCupom(check: boolean) {
     if (check) {
       this.f.cupomForm.get('codeCupom').enable();
       this.f.cupomForm.get('priceDiscount').enable();
-    }else{
+    } else {
       this.f.cupomForm.get('codeCupom').disable();
       this.f.cupomForm.get('priceDiscount').disable();
     }
   }
 
-  Addimages(): FormGroup{
+  Addimages(): FormGroup {
     return this.fb.group({
       src: [""]
     });
   }
 
-  get f(){
+  get f() {
     return this.form.controls;
   }
 
-  submitForm(){  }
+  submitForm() {
+    if (this.form.invalid) {
+      return;
+    }
+    this.productService.createProduct(this.form.value);
+  }
 
 }
