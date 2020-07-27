@@ -20,6 +20,7 @@ export class CreateEditComponent implements OnInit {
       title: ["", Validators.required],
       description: ["", Validators.required],
       price: ["", Validators.required],
+      imgs: this.fb.array([]),
       cupomForm: this.fb.group({
         codeCupom: [{value: "", disabled: true}, Validators.required],
         priceDiscount: [{value: "", disabled: true}, Validators.required]
@@ -35,6 +36,12 @@ export class CreateEditComponent implements OnInit {
       this.f.cupomForm.get('codeCupom').disable();
       this.f.cupomForm.get('priceDiscount').disable();
     }
+  }
+
+  Addimages(): FormGroup{
+    return this.fb.group({
+      src: [""]
+    });
   }
 
   get f(){
