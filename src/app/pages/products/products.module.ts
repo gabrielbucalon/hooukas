@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ProductsService } from './services/products.service';
 
 
 @NgModule({
@@ -22,6 +23,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCheckboxModule,
     MatButtonModule,
     MatDialogModule
+  ],
+  providers: [
+    ProductsService
   ]
 })
 export class ProductsModule { }
