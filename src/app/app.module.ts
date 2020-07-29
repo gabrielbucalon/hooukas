@@ -4,13 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthModule } from './pages/auth/auth.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { HomeModule } from './pages/home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
-
+import { PagesModule } from './pages/pages.module';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCG1WzfbvZMMOUNGfUK6ISOY6NAfd06Cfw",
@@ -31,12 +29,11 @@ export const firebaseConfig = {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    HomeModule,
     LayoutModule,
-    CoreModule
+    CoreModule,
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
