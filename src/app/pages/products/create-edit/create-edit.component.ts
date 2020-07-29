@@ -15,6 +15,7 @@ export class CreateEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.productService.getAll().subscribe((res: any) => console.log(res));
   }
 
   createForm() {
@@ -54,7 +55,13 @@ export class CreateEditComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.productService.createProduct(this.form.value);
+    this.productService.createProduct(this.form.value).then(res => {
+      console.log("deeeeeeeeeeeeeeeeeu bom!");
+
+
+    }, err=> {
+
+    });
   }
 
 }
