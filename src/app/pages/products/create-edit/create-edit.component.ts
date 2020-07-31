@@ -9,6 +9,7 @@ import { ProductsService } from '../services/products.service';
 })
 export class CreateEditComponent implements OnInit {
   form: FormGroup;
+  images = [];
   constructor(private fb: FormBuilder,
     private productService: ProductsService) { }
 
@@ -23,7 +24,7 @@ export class CreateEditComponent implements OnInit {
       title: ["", Validators.required],
       description: ["", Validators.required],
       price: ["", Validators.required],
-      imgs: this.fb.array([]),
+      imgs: ["", Validators.required],
       cupomForm: this.fb.group({
         codeCupom: [{ value: "", disabled: true }, Validators.required],
         priceDiscount: [{ value: "", disabled: true }, Validators.required]
@@ -47,6 +48,25 @@ export class CreateEditComponent implements OnInit {
     });
   }
 
+  onFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+
+        reader.onload = (event: any) => {
+          this.images.push(event.target.result);
+
+          this.form.patchValue({
+            imgs: this.images
+          });
+        }
+
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
+
   get f() {
     return this.form.controls;
   }
@@ -59,7 +79,7 @@ export class CreateEditComponent implements OnInit {
       console.log("deeeeeeeeeeeeeeeeeu bom!");
 
 
-    }, err=> {
+    }, err => {
 
     });
   }
