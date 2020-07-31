@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateEditComponent } from '../products/create-edit/create-edit.component';
 import { ProductsService } from '@/shared/services/products/products.service';
-import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -20,14 +19,10 @@ export class HomeComponent implements OnInit {
   }
 
   getProducts(){
-    this.productsService.getAllProducts().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ key: c.payload.key, ...c.payload.val() })
-        )
-      )
-    ).subscribe(products => {
-      this.products = products;
+    this.productsService.getAllProducts().subscribe((res: any) => {
+      res.docs.forEach(element => {
+        console.log(element.data());
+      });
     });
   }
 
