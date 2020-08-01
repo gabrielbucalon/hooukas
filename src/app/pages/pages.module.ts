@@ -5,8 +5,6 @@ import { AuthModule } from '@/pages/auth/auth.module';
 import { ProductsModule } from './products/products.module';
 import { HomeModule } from './home/home.module';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -17,4 +15,4 @@ import { HomeModule } from './home/home.module';
     ProductsModule
   ]
 })
-export class PagesModule { }
+export class PagesModule {}

@@ -4,8 +4,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthModule } from './pages/auth/auth.module';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
+import { HomeModule } from './pages/home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
@@ -21,21 +23,25 @@ export const firebaseConfig = {
   measurementId: "G-JRB1QK08K1"
 };
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
+    // AngularFireAuthModule,
+    HomeModule,
     LayoutModule,
     CoreModule,
     PagesModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
