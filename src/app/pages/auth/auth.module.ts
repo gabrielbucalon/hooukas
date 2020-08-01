@@ -9,15 +9,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '@/pages/auth/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoginComponent } from './login/login.component';
+import { AngularFireAuth } from '@angular/fire/auth';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../../../environments/environment';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -28,12 +35,13 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     ReactiveFormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
+    // AngularFireAuthModule,
     AngularFireModule,
     AngularFirestoreModule
   ],
-  providers: [
-    AuthService
-  ]
+  providers: [AuthService, AngularFireAuth],
 })
-export class AuthModule { }
+export class AuthModule {}

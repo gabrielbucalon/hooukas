@@ -1,0 +1,17 @@
+<main class="background">
+  <app-card [card]="card" >
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <mat-divider></mat-divider>
+    <form autocomplete="on" [formGroup]="form">
+      <p *ngIf="!loading" class="background__form-login--fields">
+
+      <div class="login-button">
+        <button mat-stroked-button *ngFor="let item of loginType" (click)="authService.loginPlatforms(item.type)">
+          <img class="logo" src={{item.logo}} alt="logo">
+          Sign in with {{item.type}}
+        </button>
+      </div>
+
+    </form>
+  </app-card>
+</main>
