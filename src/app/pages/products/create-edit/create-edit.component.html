@@ -53,9 +53,12 @@
 
     <section class="modal__content--snacks">
       <button mat-stroked-button color="primary">
-        <input type="file">
+        <input type="file" multiple (change)="onFileChange($event)">
         Suba as fotos dos lanches :)
       </button>
+      <div *ngIf="f.imgs.touched && f.imgs.invalid" class="alert alert-danger">
+        <div *ngIf="f.imgs.errors.required">Imagem é obrigatória</div>
+    </div>
     </section>
 
 
