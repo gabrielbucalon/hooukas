@@ -8,7 +8,6 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CarouselComponent implements OnInit {
   @Input() imgs: Array<String>;
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   constructor(config: NgbCarouselConfig) {
     config.interval = 5000;
     config.wrap = true;
