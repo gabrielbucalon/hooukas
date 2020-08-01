@@ -9,6 +9,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCG1WzfbvZMMOUNGfUK6ISOY6NAfd06Cfw",
@@ -33,7 +34,8 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     LayoutModule,
     CoreModule,
-    PagesModule
+    PagesModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

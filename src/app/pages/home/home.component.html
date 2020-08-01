@@ -3,6 +3,8 @@
   <section *ngIf="!loading">
     <app-card *ngFor="let product of products; let i = index" [card]='card[i]'>
       <mat-divider></mat-divider>
+
+      <app-carousel [imgs]='product.imgs'></app-carousel>
     </app-card>
   </section>
 
