@@ -1,0 +1,71 @@
+<main class="modal">
+  <div class="modal__header">
+    <h1 class="modal__header--title-modal">Adicionar produtos</h1>
+    <mat-icon class="modal__header--icon-food">fastfood</mat-icon>
+  </div>
+
+  <form class="modal__content" [formGroup]="form" (ngSubmit)="submitForm()">
+    <p class="modal__content--title">
+      <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input formControlName="title" type="text" matInput placeholder="Exemplo: Hámburguer">
+        <mat-hint class="message-fields--error" *ngIf="f.title.touched && f.title.invalid">Título inválido</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p class="modal__content--description">
+      <mat-form-field appearance="outline">
+        <mat-label>Descrição</mat-label>
+        <input formControlName="description" type="text" matInput placeholder="Exemplo: 2 tomates, 1 alface e etc.">
+        <mat-hint class="message-fields--error" *ngIf="f.description.touched && f.description.invalid">Descrição inválida</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p class="modal__content--price">
+      <mat-form-field appearance="outline">
+        <mat-label>Preço</mat-label>
+        <input formControlName="price" type="number" matInput placeholder="Exemplo: 19.99">
+        <mat-hint class="message-fields--error" *ngIf="f.price.touched && f.price.invalid">Preço inválido</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p class="modal__content--manage-checkbox">
+      <mat-checkbox class="example-margin" #cupom (click)="manageFieldsCupom(!cupom.checked)">Esse produto tem cupom?</mat-checkbox>
+    </p>
+
+    <form class="modal__content--cupom-form" formGroupName="cupomForm">
+      <p *ngIf="cupom.checked" class="modal__content--code-cupom">
+        <mat-form-field appearance="outline">
+          <mat-label>Código do cupom</mat-label>
+          <input formControlName="codeCupom" type="text" matInput placeholder="Exemplo: EPL932F, pode inventar :)">
+          <mat-hint class="message-fields--error" *ngIf="f.cupomForm.get('codeCupom').touched && f.cupomForm.get('codeCupom').invalid">Código cupom inválido</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p *ngIf="cupom.checked" class="modal__content--price-discount">
+        <mat-form-field appearance="outline">
+          <mat-label>Valor do desconto</mat-label>
+          <input formControlName="priceDiscount" type="number" matInput placeholder="Valor a ser subtraído">
+          <mat-hint class="message-fields--error" *ngIf="f.cupomForm.get('priceDiscount').touched && f.cupomForm.get('priceDiscount').invalid">Valor desconto inválido</mat-hint>
+        </mat-form-field>
+      </p>
+    </form>
+
+    <section class="modal__content--snacks">
+      <button mat-stroked-button color="primary">
+        <input type="file" multiple (change)="onFileChange($event)">
+        Suba as fotos dos lanches :)
+      </button>
+      <div *ngIf="f.imgs.touched && f.imgs.invalid" class="alert alert-danger">
+        <div *ngIf="f.imgs.errors.required">Imagem é obrigatória</div>
+    </div>
+    </section>
+
+
+    <footer class="modal__content--manager-btns">
+      <button type="submit" class="modal__content--manager-btns--save" mat-stroked-button
+        color="primary" [disabled]="form.invalid">Salvar</button>
+      <button type="button" mat-dialog-close mat-stroked-button color="accent">Cancelar</button>
+    </footer>
+  </form>
+</main>

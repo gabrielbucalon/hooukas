@@ -10,7 +10,7 @@ import { AuthModule } from './pages/auth/auth.module';
 import { HomeModule } from './pages/home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
-
+import { PagesModule } from './pages/pages.module';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCG1WzfbvZMMOUNGfUK6ISOY6NAfd06Cfw",
@@ -38,7 +38,8 @@ import { environment } from '../environments/environment';
     // AngularFireAuthModule,
     HomeModule,
     LayoutModule,
-    CoreModule
+    CoreModule,
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

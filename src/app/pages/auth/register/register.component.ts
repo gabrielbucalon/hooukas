@@ -6,7 +6,6 @@ import { Address, User } from '@/pages/auth/model/User';
 import { MessageComponent } from 'src/app/shared/message/message.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -37,14 +36,9 @@ export class RegisterComponent extends MessageComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     _snackBar: MatSnackBar) {
-
     super(_snackBar);
-    if(this.authService.currentUserValue){
-      this.router.navigate(['/']);
-    }
     this.card = this.initializeCard();
     this.loading = false;
-
   }
 
   validateZipCode(zipcode: string) {
