@@ -1,0 +1,111 @@
+
+@import url("https://fonts.googleapis.com/css?family=Barlow:200,300,400,500,600,700,800,900&display=swap");
+@import "src/assets/styles/colors.scss";
+
+
+a {
+ text-decoration: none;
+ color: white;
+}
+
+/* Navigation */
+nav {
+
+ /* Nav Bar */
+ .menubar {
+   display: flex;
+   flex-direction: row-reverse;
+   width: 100%;
+   height: 5em;
+   top: 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 40px;
+   box-sizing: border-box;
+   background-color: white;
+   box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.3);
+
+
+   /* Logo */
+   .home {
+     font-size: 20px;
+     font-weight: 600;
+     color: $secondary-light-color;
+     transition: all 0.4s ease;
+
+     &:hover {
+       opacity: 0.5;
+     }
+   }
+
+   /* Icons */
+   .icons {
+     display: flex;
+
+     /* Icon Menu Hamburguer */
+     .icon-menu {
+       display: flex;
+       width: 30px;
+       height: 30px;
+       z-index: 2;
+       position: relative;
+       display: flex;
+       align-items: center;
+       cursor: pointer;
+       padding: 5px;
+
+       span {
+         background-color: $secondary-light-color;
+         width: 30px;
+         height: 3px;
+         position: absolute;
+         display: flex;
+         justify-content: flex-end;
+         transition: all 0.2s ease;
+         right: 0;
+         border-radius: 5px;
+
+         &:before,
+         &:after {
+           position: absolute;
+           content: "";
+           width: 100%;
+           height: 100%;
+           background-color: $secondary-light-color;
+           border-radius: 5px;
+         }
+
+         &:before {
+           transform: translateY(-10px);
+           transition: all 0.3s 0.1s ease;
+         }
+         &:after {
+           transform: translateY(10px);
+           transition: all 0.3s 0.2s ease;
+         }
+       }
+
+       &:hover {
+         span {
+           width: 30px;
+
+           &:before {
+             width: 25px;
+           }
+
+           &:after {
+             width: 20px;
+           }
+         }
+       }
+
+     }
+   }
+ }
+
+/* Main Nav */
+ .menu {
+   display: none;
+ }
+}
