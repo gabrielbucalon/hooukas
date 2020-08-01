@@ -1,4 +1,4 @@
-<mat-card  [ngStyle]="card.style" class="example-card">
+<mat-card  *ngIf="card?.style" [ngStyle]="card?.style" class="example-card">
   <mat-card-header *ngIf="card.title || card.subtitle">
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title *ngIf="card.title">{{card.title}}</mat-card-title>

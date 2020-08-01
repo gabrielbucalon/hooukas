@@ -1,6 +1,6 @@
 export interface Products {
   title: string;
-  imgs: string[];
+  imgs: String[];
   price: number;
   description: string;
   cupomForm?: {

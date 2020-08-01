@@ -1,1 +1,12 @@
-<button (click)="modalCreateProducts()">Modal</button>
+<main class="background">
+
+  <section *ngIf="!loading">
+    <app-card *ngFor="let product of products; let i = index" [card]='card[i]'>
+      <mat-divider></mat-divider>
+    </app-card>
+  </section>
+
+  <div *ngFor="let product of products"></div>
+
+  <button (click)="modalCreateProducts()">Modal</button>
+</main>
