@@ -37,8 +37,6 @@ export class HomeComponent implements OnInit {
         });
       });
       this.products = product;
-
-      console.log(product);
       this.loading = false;
     });
   }
