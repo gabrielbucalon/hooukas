@@ -1,19 +1,11 @@
 export interface Products {
   title: string;
-  icon: string;
-  items: Items[];
-};
-
-export interface Items {
-  uid: string;
-  description: string;
-  img: string[];
+  imgs: String[];
   price: number;
-  title: string;
-  cupom?: Cupom;
+  description: string;
+  cupomForm?: {
+    codeCupom: string;
+    priceDiscount: number;
+  };
+  data?: any;
 };
-
-export interface Cupom{
-  priceDiscount: number,
-  codeCupom: string
-}
