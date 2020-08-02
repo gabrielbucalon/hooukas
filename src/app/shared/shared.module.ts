@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MessageComponent } from './message/message.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ProductsService } from './services/products/products.service';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 
 @NgModule({
