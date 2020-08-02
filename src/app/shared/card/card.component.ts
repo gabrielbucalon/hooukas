@@ -7,12 +7,13 @@ import { Card } from '@/shared/card/model/Card';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-
+  cupom: boolean;
   @Input() card: Card;
 
-  constructor() { }
+  constructor() {
+    this.cupom = false;
+   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

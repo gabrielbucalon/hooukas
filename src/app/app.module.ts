@@ -11,6 +11,7 @@ import { HomeModule } from './pages/home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCG1WzfbvZMMOUNGfUK6ISOY6NAfd06Cfw",
@@ -39,7 +40,8 @@ import { environment } from '../environments/environment';
     HomeModule,
     LayoutModule,
     CoreModule,
-    PagesModule
+    PagesModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

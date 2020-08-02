@@ -75,13 +75,7 @@ export class CreateEditComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.productService.createProduct(this.form.value).then(res => {
-      console.log("deeeeeeeeeeeeeeeeeu bom!");
-
-
-    }, err => {
-
-    });
+    this.productService.createProduct(this.form.value);
   }
 
 }

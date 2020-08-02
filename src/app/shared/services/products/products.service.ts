@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { Products } from '@/shared/models/Products';
 
 
 @Injectable({
@@ -10,7 +9,7 @@ import { Products } from '@/shared/models/Products';
 })
 export class ProductsService {
   private dbPath: string = "products";
-  productsRef: AngularFireList<Products> = null;
+  productsRef: AngularFireList<any> = null;
   constructor(private firestore: AngularFirestore, private db: AngularFireDatabase) {
    this.productsRef = db.list(this.dbPath);
   }
@@ -28,9 +27,8 @@ export class ProductsService {
 
   }
 
-  getAllProducts(): AngularFireList<Products>{
-    console.log(this.productsRef);
-    return this.productsRef;
+  getAllProducts(): Observable<any>{
+    return this.firestore.collection(this.dbPath).get();
   }
 
   getByIdProduct(){

@@ -1,9 +1,24 @@
-mat-card {
+.card {
   padding: 1em;
-  mat-card-title {
+  &__title {
     color: #795548;
   }
-  mat-card-subtitle {
+  &__subtitle {
     color: #795548;
+  }
+  &__actions {
+    display: flex;
+    justify-content: center;
+    &--add-cart {
+      border: #ff7f49 1px solid;
+      color: #ab1100;
+      font-size: 8pt;
+      font-weight: 600;
+    }
+  }
+
+  &__cupom{
+    display: flex;
+    justify-content: center;
   }
 }
