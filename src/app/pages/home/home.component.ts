@@ -26,9 +26,9 @@ export class HomeComponent implements OnInit {
   }
 
   async getProducts() {
+    this.loading = true;
     let product = Array<Products>();
     this.productsService.getAllProducts().subscribe((res: any) => {
-      this.loading = true;
       res.docs.forEach((element: Products, index: number) => {
         product.push(element.data());
         this.card.push({

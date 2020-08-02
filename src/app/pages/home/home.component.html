@@ -1,14 +1,16 @@
 <main class="background">
 
-  <section class="background__cards-products" *ngIf="!loading">
-    <div>
+  <section class="background__cards-products" >
+    <div *ngIf="!loading">
       <app-card *ngFor="let product of products; let i = index" [card]='card[i]'>
         <mat-divider></mat-divider>
         <app-carousel *ngIf="product?.imgs?.length > 0" [imgs]='product.imgs'></app-carousel>
       </app-card>
     </div>
   </section>
-
-
   <!-- <button (click)="modalCreateProducts()">Modal</button> -->
 </main>
+
+<section class="loading">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+</section>
