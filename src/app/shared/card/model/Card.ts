@@ -2,7 +2,10 @@ export interface Card  {
   style?: Style;
   title?: string;
   subtitle?: string;
-  actions?: boolean;
+  actions?:{
+    cupom: String,
+    priceDiscount: number
+  };
   img?: string[];
 }
 

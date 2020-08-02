@@ -34,9 +34,11 @@ export class HomeComponent implements OnInit {
         this.card.push({
           title: product[index].title,
           style: { backgroundColor: "#FFFFFF", margin: "1em" },
+          actions: { cupom: product[index].cupomForm.codeCupom, priceDiscount: product[index].cupomForm.priceDiscount }
         });
       });
       this.products = product;
+      console.log(product)
       this.loading = false;
     });
   }

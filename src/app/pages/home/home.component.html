@@ -5,6 +5,9 @@
       <app-card *ngFor="let product of products; let i = index" [card]='card[i]'>
         <mat-divider></mat-divider>
         <app-carousel *ngIf="product?.imgs?.length > 0" [imgs]='product.imgs'></app-carousel>
+        <div class="background__cards-products--price">
+          <h4 class="background__cards-products--subtitle-price">Preço: {{product.price}} R$</h4>
+        </div>
       </app-card>
     </div>
   </section>

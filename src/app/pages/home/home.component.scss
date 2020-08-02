@@ -1,10 +1,21 @@
 @import "src/assets/styles/fields.scss";
 @import "src/assets/base.scss";
+@import "src/assets/styles/colors.scss";
+
 
 .background{
   background: #d2d2d2;
+  &__cards-products{
+    &--price{
+      color: $secondary-light-color;
+    }
+    &--subtitle-price{
+      margin-top: 1em;
+      font-size: 16pt;
+      font-weight: 600;
+    }
+  }
 }
-
 
 .loading{
   display: flex;

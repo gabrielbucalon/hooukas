@@ -8,6 +8,10 @@ import { ProductsService } from './services/products/products.service';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -18,7 +22,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatCardModule,
     MatSnackBarModule,
     AngularFireDatabaseModule,
-    NgbModule
+    NgbModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [
     ProductsService
