@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@/pages/auth/services/auth.service';
 import { User } from '@/pages/auth/model/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,11 +13,15 @@ export class MenuComponent implements OnInit {
 
   user: User;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+    private _router: Router) {}
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("currentUser"));
   }
 
-  logoutUser() { this.authService.logout() }
+  logoutUser() {
+    this.authService.logout();
+    this._router.navigate(['register']);
+   }
 }

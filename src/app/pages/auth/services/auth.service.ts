@@ -15,17 +15,12 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  // constructor(private http: HttpClient,
-  //   public auth: AngularFireAuth
-  //   ) {}
-
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
   constructor(
     private http: HttpClient,
     public auth: AngularFireAuth,
-    // public afAuth: AngularFireAuth2,
     private firestore: AngularFirestore,
     private router: Router
   ) {
@@ -35,18 +30,18 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  // async signupUser(userParams: User, email: string, password: string) {
-  //   return this.afAuth.auth
-  //     .createUserWithEmailAndPassword(email, password)
-  //     .then(() => {
-  //       return this.afAuth.auth
-  //         .signInWithEmailAndPassword(email, password)
-  //         .then((authUser) => {
-  //           userParams.uid = authUser.user.uid;
-  //           this.saveUser(userParams);
-  //         });
-  //     });
-  // }
+  async signupUser(userParams: User, email: string, password: string) {
+    return this.auth.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        return this.auth.auth
+          .signInWithEmailAndPassword(email, password)
+          .then((authUser) => {
+            userParams.uid = authUser.user.uid;
+            this.saveUser(userParams);
+          });
+      });
+  }
 
   async saveUser(user: User) {
     return this.firestore

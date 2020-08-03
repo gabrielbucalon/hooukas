@@ -6,6 +6,7 @@ import { Address, User } from '@/pages/auth/model/User';
 import { MessageComponent } from 'src/app/shared/message/message.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +36,8 @@ export class RegisterComponent extends MessageComponent {
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    _snackBar: MatSnackBar) {
+    _snackBar: MatSnackBar,
+    public auth: AngularFireAuth) {
     super(_snackBar);
     this.card = this.initializeCard();
     this.loading = false;
@@ -71,35 +73,28 @@ export class RegisterComponent extends MessageComponent {
   }
 
   submitForm() {
-
-    // const result = this.afAuth.auth.signInWithEmailAndPassword(this.form.get('email').value, this.form.get('password').value);
-    // if (result) {
-    //   this.openSnackBar("bom dia corno ", "BLZ", 5000);
-    //   // this.navCtrl.setRoot('HomePage');
-    // }
-
-    // try {
-    //   this.user = {
-    //     name: this.f.name.value,
-    //     address: {
-    //       bairro: this.f.neighborhood.value,
-    //       cep: this.f.zipcode.value,
-    //       complemento: this.f.complement.value,
-    //       localidade: this.f.city.value,
-    //       logradouro: this.f.address.value,
-    //       uf: this.f.uf.value
-    //     },
-    //     email: this.f.email.value,
-    //     uid: ""
-    //   };
-    //   this.authService.signupUser(this.user, this.f.email.value, this.f.password.value).then(async () => {
-    //     this.loading = true;
-    //     this.openSnackBar(`Usuário criado com sucesso \nSeja bem-vindo(a) :D`, "OK", 5000);
-    //     this.loading = false;
-    //   });
-    // } catch (e) {
-    //   console.error(e);
-    // }
+    try {
+      this.user = {
+        name: this.f.name.value,
+        address: {
+          bairro: this.f.neighborhood.value,
+          cep: this.f.zipcode.value,
+          complemento: this.f.complement.value,
+          localidade: this.f.city.value,
+          logradouro: this.f.address.value,
+          uf: this.f.uf.value
+        },
+        email: this.f.email.value,
+        uid: ""
+      };
+      this.authService.signupUser(this.user, this.f.email.value, this.f.password.value).then(async () => {
+        this.loading = true;
+        this.openSnackBar(`Usuário criado com sucesso \nSeja bem-vindo(a) :D`, "OK", 5000);
+        this.loading = false;
+      });
+    } catch (e) {
+      console.error(e);
+    }
 
   }
 
