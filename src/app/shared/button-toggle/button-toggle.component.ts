@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-button-toggle',
@@ -6,17 +7,16 @@ import { Component, OnInit, Output } from '@angular/core';
   styleUrls: ['./button-toggle.component.scss']
 })
 export class ButtonToggleComponent implements OnInit {
-  @Output() quantity;
+  @Output() quantity = new EventEmitter<String>();
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  oneMoreSnack() {
+    this.quantity.emit('+1');
   }
 
-  oneMoreSnack(){
-    console.log('+1');
-  }
-
-  lessSnack(){
-    console.log('-1');
+  lessSnack() {
+    this.quantity.emit('-1');
   }
 }

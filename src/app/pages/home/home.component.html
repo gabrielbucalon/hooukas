@@ -8,8 +8,8 @@
               <mat-divider></mat-divider>
               <app-carousel *ngIf="product?.imgs?.length > 0" [imgs]='product.imgs'></app-carousel>
               <div class="background__cards-products--price">
-                <h4 class="background__cards-products--subtitle-price">Preço: {{product.price}} R$</h4>
-                <app-button-toggle class="background__cards-products--btn-toogle"></app-button-toggle>
+                <h4 class="background__cards-products--subtitle-price">Preço: {{product.price.toFixed(2)}} R$</h4>
+                <app-button-toggle (quantity)="addOrRemoveItem($event, i)" class="background__cards-products--btn-toogle"></app-button-toggle>
               </div>
             </app-card>
           </div>

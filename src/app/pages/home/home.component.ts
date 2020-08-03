@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateEditComponent } from '../products/create-edit/create-edit.component';
+import { CreateEditComponent } from '@/pages/products/create-edit/create-edit.component';
 import { ProductsService } from '@/shared/services/products/products.service';
 import { Products } from '@/shared/models/Products';
-
+import { ITEM } from '@/pages/home/constants/Itens';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +15,15 @@ export class HomeComponent implements OnInit {
   products: Array<Products>;
   card = [];
 
+  price: number;
+  priceFixe: Array<number>;
+
   loading: boolean;
 
   constructor(public dialog: MatDialog, private productsService: ProductsService) {
     this.loading = false;
+    this.price = 0.0;
+    this.priceFixe = [];
   }
 
   ngOnInit(): void {
@@ -36,9 +41,9 @@ export class HomeComponent implements OnInit {
           style: { backgroundColor: "#FFFFFF", margin: "1em" },
           actions: { cupom: product[index].cupomForm.codeCupom, priceDiscount: product[index].cupomForm.priceDiscount }
         });
+        this.priceFixe.push(Number(product[index].price.toFixed(2)));
       });
       this.products = product;
-      console.log(product)
       this.loading = false;
     });
   }
@@ -48,5 +53,17 @@ export class HomeComponent implements OnInit {
       width: "100vh",
       height: "auto"
     });
+  }
+
+  addOrRemoveItem($event, index: number) {
+    if (ITEM.MORE_ONE === $event) {
+      this.products[index].price += this.priceFixe[index];
+    } else {
+      if (Number(this.products[index].price.toFixed(2)) === this.priceFixe[index]) {
+        return;
+      }else{
+        this.products[index].price -= this.priceFixe[index];
+      }
+    }
   }
 }
