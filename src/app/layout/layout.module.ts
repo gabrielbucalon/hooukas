@@ -4,12 +4,13 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
+import { CartComponent } from './cart/cart.component';
 
 
 
 
 @NgModule({
-  declarations: [FooterComponent, MenuComponent],
+  declarations: [FooterComponent, MenuComponent, CartComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
