@@ -1,17 +1,51 @@
 <main class="background">
-  <app-card [card]="card" >
+  <app-card [card]="card">
     <mat-spinner *ngIf="loading"></mat-spinner>
     <mat-divider></mat-divider>
-    <form autocomplete="on" [formGroup]="form">
+    <form autocomplete="off" [formGroup]="form" class="background__form-register">
       <p *ngIf="!loading" class="background__form-login--fields">
 
-      <div class="login-button">
-        <button mat-stroked-button *ngFor="let item of loginType" (click)="authService.loginPlatforms(item.type)">
+      <div class="login-button" *ngIf="!isEmail">
+        <button mat-stroked-button *ngFor="let item of loginType" (click)="validate(item.type)">
           <img class="logo" src={{item.logo}} alt="logo">
           Sign in with {{item.type}}
         </button>
       </div>
 
+      <div class="credentials" *ngIf="isEmail">
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input name="email" formControlName="email" type="email" matInput placeholder="E-Mail" alt="E-mail">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          <mat-hint *ngIf="!f.email.touched"> <strong>Exemplo: </strong> exemplo@gmail.com </mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.email.touched && f.email.invalid">E-mail inválido</mat-hint>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input formControlName="password" name="password" type="password" matInput placeholder="Senha" alt="Senha">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          <mat-hint *ngIf="!f.password.touched"><strong> Exemplo: </strong> 1234@teste</mat-hint>
+          <mat-hint class="message-fields--error" *ngIf="f.password.touched && f.password.invalid">Senha inválida
+          </mat-hint>
+        </mat-form-field>
+
+
+
+        <div class="background__footer-btns">
+          <button mat-button class="background__footer-btns--btn-create-account" [disabled]="!form.valid" (click)="validate('email')"
+            color="primary">Cadastrar</button>
+          <button mat-button class="background__footer-btns--btn-back-page" type="button" (click)="isEmail = false"
+            color="warn">Cancelar</button>
+        </div>
+      </div>
     </form>
+
+    <div class="hyperlinks">
+      <a (click)="forget()">Esqueci a senha</a>
+      <a href="/register">Registrar-se</a>
+    </div>
+
   </app-card>
 </main>

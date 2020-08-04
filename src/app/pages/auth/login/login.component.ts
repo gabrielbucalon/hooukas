@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/shared/card/model/Card';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateEditComponent } from '../../products/create-edit/create-edit.component';
+import { RecoverPasswordComponent } from '../dialogs/recover-password/recover-password.component';
+
 
 @Component({
   selector: 'app-login',
@@ -10,8 +14,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  emailForm: FormGroup;
   card: Card;
   loading: boolean;
+  isEmail = false;
 
   loginType: any[] = [
     {
@@ -29,7 +35,11 @@ export class LoginComponent implements OnInit {
     },
   ];
 
-  constructor(private fb: FormBuilder, public authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    public authService: AuthService,
+    public dialog: MatDialog
+  ) {
     this.card = this.initializeCard();
     this.loading = false;
   }
@@ -47,8 +57,14 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      email: [null, Validators.compose([Validators.required, Validators.email])],
-      password: [null, Validators.compose([Validators.required, Validators.minLength(6)])],
+      email: [
+        null,
+        Validators.compose([Validators.required, Validators.email]),
+      ],
+      password: [
+        null,
+        Validators.compose([Validators.required, Validators.minLength(6)]),
+      ],
     });
   }
 
@@ -59,5 +75,33 @@ export class LoginComponent implements OnInit {
       },
       title: 'Login',
     };
+  }
+
+  validate(type: string) {
+    this.authService.loginPlatforms(type);
+    // if (type !== 'email') {
+    // this.authService.loginPlatforms(type);
+    // } else if(type === 'email' && this.form.valid) {
+    // this.authService.loginPlatforms('email');
+    //  this.authService.login(
+    //    this.form.get('email').value,
+    //    this.form.get('password').value
+    //  );
+
+    // }
+    // else {
+    //   this.isEmail = true;
+    // }
+  }
+
+  get f() {
+    return this.form.controls;
+  }
+
+  forget() {
+    const dialogRef = this.dialog.open(RecoverPasswordComponent, {
+      width: '300px',
+      height: 'auto',
+    });
   }
 }
