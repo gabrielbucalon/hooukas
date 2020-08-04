@@ -23,15 +23,17 @@
   mat-divider {
     margin-bottom: 1000px;
   }
+
+  &__footer-btns {
+    &--btn-create-account {
+      margin-right: 1em;
+      border: 1px solid #795548;
+      color: #795548;
+    }
+  }
 }
 
 .login-button {
-  // margin-top: 100px;
-  // margin: auto;
-  // width: 50%;
-  // border: 3px solid green;
-  // padding: 10px;
-  // align-content: center;
   button {
     display: flex;
     width: 300px;
@@ -44,3 +46,25 @@
     }
   }
 }
+
+.credentials{
+   display: flex;
+   flex-direction: column;
+  align-content: center;
+}
+
+app-card {
+  padding: 1em;
+}
+
+.hyperlinks {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  a {
+    color: #795548;
+    margin: 10px;
+  }
+}
+

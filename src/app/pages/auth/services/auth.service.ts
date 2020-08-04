@@ -73,6 +73,8 @@ export class AuthService {
   }
 
   loginPlatforms(type: string) {
+    console.log(type);
+
     switch (type) {
       case 'google':
         return this.AuthLogin(new auth.GoogleAuthProvider());
@@ -80,6 +82,10 @@ export class AuthService {
 
       case 'facebook':
         return this.AuthLogin(new auth.FacebookAuthProvider());
+        break;
+
+      case 'email':
+        return this.AuthLogin(new auth.EmailAuthProvider());
 
         break;
 
@@ -90,14 +96,16 @@ export class AuthService {
 
   // Auth logic to run auth providers
   AuthLogin(provider) {
-    // return this.auth
-    //   .signInWithPopup(provider)
-    //   .then((result) => {
-    //     console.log('You have been successfully logged in!');
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    return this.auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        console.log(result);
+
+        console.log('You have been successfully logged in!');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     //////////////////////////////////////////////////////////////////////////
   }

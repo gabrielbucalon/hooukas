@@ -17,6 +17,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../../../environments/environment';
+import { RecoverPasswordComponent } from './dialogs/recover-password/recover-password.component';
 // import { AngularFireAuthModule } from 'angularfire2/auth';
 // import { AngularFireModule } from 'angularfire2';
 // import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -24,7 +25,7 @@ import { environment } from '../../../environments/environment';
 
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent],
+  declarations: [RegisterComponent, LoginComponent, RecoverPasswordComponent],
   imports: [
     CommonModule,
     SharedModule,
