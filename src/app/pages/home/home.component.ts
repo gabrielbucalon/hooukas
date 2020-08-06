@@ -13,7 +13,8 @@ import { ITEM } from '@/pages/home/constants/Itens';
 export class HomeComponent implements OnInit {
 
   products: Array<Products>;
-  card = [];
+  card: any;
+  cart: Array<any>;
 
   price: number;
   priceFixe: Array<number>;
@@ -24,6 +25,14 @@ export class HomeComponent implements OnInit {
     this.loading = false;
     this.price = 0.0;
     this.priceFixe = [];
+    this.card = [];
+    this.cart = [];
+  }
+
+  addCart(event, product: Products){
+    if (event) {
+      this.cart.push(product);
+    }
   }
 
   ngOnInit(): void {
