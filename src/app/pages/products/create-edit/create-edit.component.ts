@@ -29,6 +29,7 @@ export class CreateEditComponent implements OnInit {
         codeCupom: [{ value: "", disabled: true }, Validators.required],
         priceDiscount: [{ value: "", disabled: true }, Validators.required]
       }),
+      quantity: [0]
     });
   }
 

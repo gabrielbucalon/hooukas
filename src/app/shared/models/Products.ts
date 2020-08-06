@@ -3,6 +3,7 @@ export interface Products {
   imgs: String[];
   price: number;
   description: string;
+  quantity: 0;
   cupomForm?: {
     codeCupom: string;
     priceDiscount: number;

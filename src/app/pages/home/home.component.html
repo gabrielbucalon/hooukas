@@ -11,11 +11,16 @@
               <app-button-toggle (quantity)="addOrRemoveItem($event, i)" class="background__cards-products--btn-toogle">
               </app-button-toggle>
             </div>
+
+            <div class="background__cards-products--quantity">
+              <span>Quantidade: {{product.quantity + 1}}</span>
+            </div>
+
           </app-card>
         </div>
       </div>
     </div>
-    <button *ngIf="cart.length > 0" matBadgeColor="warn" matBadge={{cart.length}} mat-fab class="background__btn-float-cart">
+    <button *ngIf="cart.length > 0" matBadgeColor="warn" matBadge={{sum}} mat-fab class="background__btn-float-cart">
       <mat-icon >shopping_cart</mat-icon>
     </button>
   </section>

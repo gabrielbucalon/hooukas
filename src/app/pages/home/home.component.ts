@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   priceFixe: Array<number>;
 
   loading: boolean;
+  sum: number;
 
   constructor(public dialog: MatDialog, private productsService: ProductsService) {
     this.loading = false;
@@ -27,12 +28,14 @@ export class HomeComponent implements OnInit {
     this.priceFixe = [];
     this.card = [];
     this.cart = [];
+    this.sum = 0;
   }
 
   addCart(event, product: Products){
-    if (event) {
-      this.cart.push(product);
-    }
+    this.cart.push(product);
+    this.sum += product.quantity + 1;
+    console.log(this.sum);
+    console.log(product);
   }
 
   ngOnInit(): void {
@@ -67,11 +70,13 @@ export class HomeComponent implements OnInit {
   addOrRemoveItem($event, index: number) {
     if (ITEM.MORE_ONE === $event) {
       this.products[index].price += this.priceFixe[index];
+      Math.floor(this.products[index].quantity++);
     } else {
       if (Number(this.products[index].price.toFixed(2)) === this.priceFixe[index]) {
         return;
       }else{
         this.products[index].price -= this.priceFixe[index];
+        Math.floor(this.products[index].quantity--);
       }
     }
   }

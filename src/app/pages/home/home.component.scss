@@ -20,6 +20,11 @@
     &--btn-toogle {
       margin-top: 0.1em;
     }
+
+    &--quantity{
+      color: $secondary-light-color;
+      font-weight: 600;
+    }
   }
 
   &__btn-float-cart {
