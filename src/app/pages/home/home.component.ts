@@ -31,9 +31,10 @@ export class HomeComponent implements OnInit {
     this.sum = 0;
   }
 
-  addCart(event, product: Products){
+  addCart(event, product: Products) {
     this.cart.push(product);
     this.sum += product.quantity + 1;
+
     console.log(this.sum);
     console.log(product);
   }
@@ -74,7 +75,7 @@ export class HomeComponent implements OnInit {
     } else {
       if (Number(this.products[index].price.toFixed(2)) === this.priceFixe[index]) {
         return;
-      }else{
+      } else {
         this.products[index].price -= this.priceFixe[index];
         Math.floor(this.products[index].quantity--);
       }
