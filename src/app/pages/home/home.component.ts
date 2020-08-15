@@ -13,17 +13,29 @@ import { ITEM } from '@/pages/home/constants/Itens';
 export class HomeComponent implements OnInit {
 
   products: Array<Products>;
-  card = [];
+  card: any;
+  cart: Array<any>;
 
   price: number;
   priceFixe: Array<number>;
 
   loading: boolean;
+  sum: number;
 
   constructor(public dialog: MatDialog, private productsService: ProductsService) {
     this.loading = false;
     this.price = 0.0;
     this.priceFixe = [];
+    this.card = [];
+    this.cart = [];
+    this.sum = 0;
+  }
+
+  addCart(event, product: Products){
+    this.cart.push(product);
+    this.sum += product.quantity + 1;
+    console.log(this.sum);
+    console.log(product);
   }
 
   ngOnInit(): void {
@@ -58,11 +70,13 @@ export class HomeComponent implements OnInit {
   addOrRemoveItem($event, index: number) {
     if (ITEM.MORE_ONE === $event) {
       this.products[index].price += this.priceFixe[index];
+      Math.floor(this.products[index].quantity++);
     } else {
       if (Number(this.products[index].price.toFixed(2)) === this.priceFixe[index]) {
         return;
       }else{
         this.products[index].price -= this.priceFixe[index];
+        Math.floor(this.products[index].quantity--);
       }
     }
   }

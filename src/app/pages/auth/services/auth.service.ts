@@ -31,10 +31,10 @@ export class AuthService {
   }
 
   async signupUser(userParams: User, email: string, password: string) {
-    return this.auth.auth
+    return this.auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        return this.auth.auth
+        return this.auth
           .signInWithEmailAndPassword(email, password)
           .then((authUser) => {
             userParams.uid = authUser.user.uid;

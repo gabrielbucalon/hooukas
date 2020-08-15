@@ -6,6 +6,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '@/shared/shared.module';
 import {  MatDividerModule } from '@angular/material/divider';
 import {  MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import {  MatIconModule } from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import {  MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatDialogModule,
     SharedModule,
     MatDividerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatIconModule,
+    MatBadgeModule
   ],
   providers: [
     HomeService
