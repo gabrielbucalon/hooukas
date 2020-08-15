@@ -3,7 +3,6 @@
 @import "src/assets/styles/colors.scss";
 
 .background {
-  background: #d2d2d2;
   height: 100vh;
   &__cards-products {
     &--price {
@@ -21,7 +20,7 @@
       margin-top: 0.1em;
     }
 
-    &--quantity{
+    &--quantity {
       color: $secondary-light-color;
       font-weight: 600;
     }
@@ -40,5 +39,3 @@
   justify-content: center;
   align-items: center;
 }
-
-
