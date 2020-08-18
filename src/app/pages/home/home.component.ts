@@ -4,7 +4,7 @@ import { CreateEditComponent } from '@/pages/products/create-edit/create-edit.co
 import { ProductsService } from '@/shared/services/products/products.service';
 import { Products } from '@/shared/models/Products';
 import { ITEM } from '@/pages/home/constants/Itens';
-import { element } from 'protractor';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +23,9 @@ export class HomeComponent implements OnInit {
   loading: boolean;
   sum: number;
 
-  constructor(public dialog: MatDialog, private productsService: ProductsService) {
+  constructor(public dialog: MatDialog,
+    private productsService: ProductsService,
+    private _snackBar: MatSnackBar) {
     this.loading = false;
     this.price = 0.0;
     this.priceFixe = [];
@@ -33,10 +35,13 @@ export class HomeComponent implements OnInit {
   }
 
   addCart(event, product: Products) {
-    this.cart.push(product);
-    this.sum += product.quantity + 1;
-    // console.log(this.sum);
-    // console.log(product);
+    const foundProduct = this.cart.find(cart => cart.id === product.id);
+    if (foundProduct) {
+      this._snackBar.open("Você já adicionou essse produto no carrinho. Você pode modificar ele no carrinho :)", "OK");
+    } else {
+      this.cart.push(product);
+      this.sum += product.quantity + 1;
+    }
   }
 
   ngOnInit(): void {
@@ -49,7 +54,6 @@ export class HomeComponent implements OnInit {
     this.productsService.getAllProducts().subscribe((res: any) => {
       res.docs.forEach((element: Products, index: number) => {
         product.push(this.mountProduct(element));
-        // console.log(product);
         this.card.push({
           title: product[index].title,
           style: { backgroundColor: "#FFFFFF", margin: "1em" },
