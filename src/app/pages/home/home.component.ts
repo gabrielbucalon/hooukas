@@ -4,6 +4,7 @@ import { CreateEditComponent } from '@/pages/products/create-edit/create-edit.co
 import { ProductsService } from '@/shared/services/products/products.service';
 import { Products } from '@/shared/models/Products';
 import { ITEM } from '@/pages/home/constants/Itens';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-home',
@@ -34,9 +35,8 @@ export class HomeComponent implements OnInit {
   addCart(event, product: Products) {
     this.cart.push(product);
     this.sum += product.quantity + 1;
-
-    console.log(this.sum);
-    console.log(product);
+    // console.log(this.sum);
+    // console.log(product);
   }
 
   ngOnInit(): void {
@@ -48,7 +48,8 @@ export class HomeComponent implements OnInit {
     let product = Array<Products>();
     this.productsService.getAllProducts().subscribe((res: any) => {
       res.docs.forEach((element: Products, index: number) => {
-        product.push(element.data());
+        product.push(this.mountProduct(element));
+        // console.log(product);
         this.card.push({
           title: product[index].title,
           style: { backgroundColor: "#FFFFFF", margin: "1em" },
@@ -59,6 +60,20 @@ export class HomeComponent implements OnInit {
       this.products = product;
       this.loading = false;
     });
+  }
+
+  mountProduct(elementData: Products) {
+    let objProduct;
+
+    return objProduct = {
+      id: elementData.id,
+      title: elementData.data().title,
+      quantity: elementData.data().quantity,
+      price: elementData.data().price,
+      imgs: elementData.data().imgs,
+      description: elementData.data().description,
+      cupomForm: elementData.data().cupomForm ? elementData.data().cupomForm : null
+    }
   }
 
   modalCreateProducts() {
