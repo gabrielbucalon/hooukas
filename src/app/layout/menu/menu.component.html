@@ -1,10 +1,18 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <div class="content-drawer">
-      <p>Olá, <span class="name-user">
+      <p class="hello-user">Olá, <span class="name-user">
           &nbsp;{{user.name}}
         </span> </p>
-      <button mat-stroked-button color="warn" (click)="logoutUser()">Sair</button>
+      <button mat-stroked-button color="warn">
+        <mat-icon>settings</mat-icon>
+        Configurações
+      </button>
+      <button mat-stroked-button color="warn" (click)="logoutUser()">
+        <mat-icon>login</mat-icon>
+        Sair
+      </button>
+
     </div>
   </mat-drawer>
 

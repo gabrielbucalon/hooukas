@@ -10,9 +10,12 @@ a {
   justify-content: center;
   margin-top: 2em;
   flex-direction: column;
+  .hello-user {
+    margin: 1em 1em;
+  }
   .name-user {
     color: $primary-color;
-    font-weight: 500;
+    font-weight: 600;
   }
 }
 
@@ -23,6 +26,12 @@ a {
   overflow-y: auto;
   transform: translate3d(-100%, 0, 0);
   width: 25vh;
+  mat-icon {
+    color: #000000;
+  }
+  button {
+    margin: 0.1em 1em 1em 1em;
+  }
 }
 
 /* Navigation */
