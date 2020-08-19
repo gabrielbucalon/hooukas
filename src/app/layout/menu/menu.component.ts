@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
   user: User;
 
   constructor(private authService: AuthService,
-    private _router: Router) {}
+    private _router: Router) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("currentUser"));
@@ -23,5 +23,10 @@ export class MenuComponent implements OnInit {
   logoutUser() {
     this.authService.logout();
     this._router.navigate(['register']);
-   }
+  }
+
+  configUser(drawer) {
+    drawer.toggle();
+    this._router.navigate(['configuracao']);
+  }
 }

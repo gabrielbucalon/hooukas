@@ -4,7 +4,7 @@
       <p class="hello-user">Olá, <span class="name-user">
           &nbsp;{{user.name}}
         </span> </p>
-      <button mat-stroked-button color="warn">
+      <button (click)="configUser(drawer)" mat-stroked-button color="warn">
         <mat-icon>settings</mat-icon>
         Configurações
       </button>
