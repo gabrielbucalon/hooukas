@@ -1,4 +1,5 @@
 export interface Products {
+  id: String;
   title: string;
   imgs: String[];
   price: number;
