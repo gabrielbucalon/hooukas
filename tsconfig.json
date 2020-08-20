@@ -11,18 +11,16 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "paths": {
       "@/*": ["src/app/*"],
       "@core/*": ["src/app/core/*"],
       "@layout/*": ["src/app/layout/*"],
       "@pages/*": ["src/app/pages/*"],
       "@mock/*": ["src/app/mock/*"],
-      "@shared/*": ["src/app/shared/*"]
-    },
+      "@shared/*": ["src/app/shared/*"],
+      "@assets/*": ["src/assets/*"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
