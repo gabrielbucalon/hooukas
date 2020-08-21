@@ -1,75 +1,93 @@
 <main class="background">
 
-  <app-card [card]="card">
-    <mat-spinner *ngIf="loading"></mat-spinner>
-    <mat-divider></mat-divider>
-    <form [formGroup]="form" (ngSubmit)="submitForm()" class="background__form-register">
-      <p *ngIf="!loading" class="background__form-register--fields">
+  <div class="background__card-register">
+    <app-card [card]="card">
+      <mat-spinner *ngIf="loading"></mat-spinner>
+      <mat-divider></mat-divider>
+      <form [formGroup]="form" (ngSubmit)="submitForm()" class="background__form-register">
+        <p *ngIf="!loading" class="background__form-register--fields">
 
-        <mat-form-field appearance="outline">
-          <mat-label>Nome</mat-label>
-          <input formControlName="name" type="text" matInput placeholder="Placeholder" alt="Nome">
-          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint *ngIf="!f.name.touched"> <strong>Exemplo: </strong> Jóse Silva Ribeiro </mat-hint>
-          <mat-hint class="message-fields--error" *ngIf="f.name.touched && f.name.invalid">Nome inválido</mat-hint>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input formControlName="name" type="text" matInput placeholder="Placeholder" alt="Nome">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+            <mat-hint *ngIf="!f.name.touched"> <strong>Exemplo: </strong> Jóse Silva Ribeiro </mat-hint>
+            <mat-hint class="message-fields--error" *ngIf="f.name.touched && f.name.invalid">Nome inválido</mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>E-mail</mat-label>
-          <input name="email" formControlName="email" type="email" matInput placeholder="Placeholder" alt="E-mail">
-          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint *ngIf="!f.email.touched"> <strong>Exemplo: </strong> jose@gmail.com </mat-hint>
-          <mat-hint class="message-fields--error" *ngIf="f.email.touched && f.email.invalid">E-mail inválido</mat-hint>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input name="email" formControlName="email" type="email" matInput placeholder="Placeholder" alt="E-mail">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+            <mat-hint *ngIf="!f.email.touched"> <strong>Exemplo: </strong> jose@gmail.com </mat-hint>
+            <mat-hint class="message-fields--error" *ngIf="f.email.touched && f.email.invalid">E-mail inválido
+            </mat-hint>
+          </mat-form-field>
 
 
-        <mat-form-field appearance="outline">
-          <mat-label>Senha</mat-label>
-          <input formControlName="password" name="password" type="password" matInput placeholder="Placeholder" alt="Senha">
-          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint *ngIf="!f.password.touched" ><strong> Exemplo: </strong> 1234@teste</mat-hint>
-          <mat-hint class="message-fields--error" *ngIf="f.password.touched && f.password.invalid">Senha inválida</mat-hint>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input formControlName="password" name="password" type="password" matInput placeholder="Placeholder"
+              alt="Senha">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+            <mat-hint *ngIf="!f.password.touched"><strong> Exemplo: </strong> 1234@teste</mat-hint>
+            <mat-hint class="message-fields--error" *ngIf="f.password.touched && f.password.invalid">Senha inválida
+            </mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>CEP</mat-label>
-          <input maxlength="8" formControlName="zipcode" type="text" name="zipcode" matInput placeholder="Placeholder" alt="CEP">
-          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint *ngIf="!f.zipcode.touched"> <strong> Exemplo: </strong> 00000000</mat-hint>
-          <mat-hint class="message-fields--error" *ngIf="f.zipcode.touched && f.zipcode.invalid">CEP inválido</mat-hint>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>CEP</mat-label>
+            <input maxlength="8" formControlName="zipcode" type="text" name="zipcode" matInput placeholder="Placeholder"
+              alt="CEP">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+            <mat-hint *ngIf="!f.zipcode.touched"> <strong> Exemplo: </strong> 00000000</mat-hint>
+            <mat-hint class="message-fields--error" *ngIf="f.zipcode.touched && f.zipcode.invalid">CEP inválido
+            </mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Endereço</mat-label>
-          <input formControlName="address" type="text" name="address" matInput placeholder="Placeholder" alt="Endereço">
-          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint *ngIf="!f.address.touched"> <strong> Exemplo: </strong> Rua antiga 13 </mat-hint>
-          <mat-hint class="message-fields--error" *ngIf="f.address.touched && f.address.invalid">Endereço inválido</mat-hint>
+          <mat-form-field appearance="outline">
+            <mat-label>Endereço</mat-label>
+            <input formControlName="address" type="text" name="address" matInput placeholder="Placeholder"
+              alt="Endereço">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+            <mat-hint *ngIf="!f.address.touched"> <strong> Exemplo: </strong> Rua antiga 13 </mat-hint>
+            <mat-hint class="message-fields--error" *ngIf="f.address.touched && f.address.invalid">Endereço inválido
+            </mat-hint>
 
-        </mat-form-field>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>N°</mat-label>
-          <input formControlName="number" type="number" name="number" matInput placeholder="Placeholder" alt="Número">
-          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint *ngIf="!f.number.touched"> <strong> Exemplo: </strong> 42</mat-hint>
-          <mat-hint class="message-fields--error" *ngIf="f.number.touched && f.number.invalid">Número inválido</mat-hint>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>N°</mat-label>
+            <input formControlName="number" type="number" name="number" matInput placeholder="Placeholder" alt="Número">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+            <mat-hint *ngIf="!f.number.touched"> <strong> Exemplo: </strong> 42</mat-hint>
+            <mat-hint class="message-fields--error" *ngIf="f.number.touched && f.number.invalid">Número inválido
+            </mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Complemento</mat-label>
-          <input formControlName="complement" type="text" name="complement" matInput placeholder="Placeholder" alt="Complemento">
-          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-hint *ngIf="!f.complement.touched"> <strong> Exemplo: </strong> Casa/apt bloco 2 </mat-hint>
-          <mat-hint class="message-fields--error" *ngIf="f.complement.touched && f.complement.invalid">Complemento inválido</mat-hint>
+          <mat-form-field appearance="outline">
+            <mat-label>Complemento</mat-label>
+            <input formControlName="complement" type="text" name="complement" matInput placeholder="Placeholder"
+              alt="Complemento">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+            <mat-hint *ngIf="!f.complement.touched"> <strong> Exemplo: </strong> Casa/apt bloco 2 </mat-hint>
+            <mat-hint class="message-fields--error" *ngIf="f.complement.touched && f.complement.invalid">Complemento
+              inválido</mat-hint>
 
-        </mat-form-field>
-      </p>
+          </mat-form-field>
+        </p>
 
-      <div class="background__footer-btns">
-        <button mat-button class="background__footer-btns--btn-create-account" [disabled]="!form.valid" type="submit" color="primary">Cadastrar</button>
-        <button (click)="backPage()" mat-button class="background__footer-btns--btn-back-page" type="button" color="warn">Voltar</button>
-      </div>
-    </form>
-  </app-card>
+        <div class="background__footer-btns">
+          <button mat-button class="background__footer-btns--btn-create-account" [disabled]="!form.valid" type="submit"
+            color="primary">Cadastrar</button>
+          <button (click)="backPage()" mat-button class="background__footer-btns--btn-back-page" type="button"
+            color="warn">Voltar</button>
+        </div>
+      </form>
+    </app-card>
+  </div>
+
+  <div class="background__peoples-conversation">
+    <img src="../../../../assets//draw/login.svg" alt="Pessoas">
+  </div>
 </main>

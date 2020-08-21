@@ -1,12 +1,9 @@
 @import "src/assets/base.scss";
 
 .background {
-  height: 100vh;
-  width: 100%;
-  background-image: url("https://us.123rf.com/450wm/alxyzt/alxyzt1712/alxyzt171200042/90996098-seamless-pattern-of-burgers-background-for-fast-food-packing-poster-.jpg?ver=6");
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  flex-direction: row-reverse;
 
   &__form-register {
     display: flex;
@@ -31,6 +28,10 @@
       border: 1px solid #ca582f;
       color: #ca582f;
     }
+  }
+  &__peoples-conversation {
+    width: 30vw;
+    height: 30vh;
   }
 }
 
