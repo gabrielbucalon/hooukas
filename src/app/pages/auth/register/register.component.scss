@@ -1,12 +1,9 @@
 @import "src/assets/base.scss";
 
 .background {
-  height: 100vh;
-  width: 100%;
-  background-image: url("https://us.123rf.com/450wm/alxyzt/alxyzt1712/alxyzt171200042/90996098-seamless-pattern-of-burgers-background-for-fast-food-packing-poster-.jpg?ver=6");
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  flex-direction: row-reverse;
 
   &__form-register {
     display: flex;
@@ -32,8 +29,68 @@
       color: #ca582f;
     }
   }
+  &__peoples-conversation--peoples {
+    width: 65vw;
+    height: 90vh;
+  }
 }
 
 app-card {
   padding: 1em;
+}
+
+@media (min-width: $laptop) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 70vw;
+        height: 100vh;
+      }
+    }
+  }
+}
+
+@media (min-width: $laptop-L) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 70vw;
+        height: 80vh;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile-L) {
+  .background {
+    display: flex;
+    justify-content: center;
+    &__peoples-conversation {
+      &--peoples {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 60vw;
+        height: 85vh;
+      }
+    }
+  }
+}
+
+@media (max-width: $laptop-L) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 70vw;
+        height: 100vh;
+      }
+    }
+  }
 }
