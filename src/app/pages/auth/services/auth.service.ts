@@ -30,7 +30,13 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  async signupUser(userParams: User, email: string, password: string) {
+  /**
+   * Realiza o login após o registro de usuário
+   * @param userParams Informações do usuário após o registro. Ex(Endereço, id...).
+   * @param email E-Mail de cadastro do usuário.
+   * @param password Senha do usuário.
+   */
+  async signInUser(userParams: User, email: string, password: string) {
     return this.auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
@@ -43,6 +49,10 @@ export class AuthService {
       });
   }
 
+  /**
+   * 
+   * @param user Informações usadas no cadastro do usuário.
+   */
   async saveUser(user: User) {
     return this.firestore
       .collection('users')
@@ -54,19 +64,18 @@ export class AuthService {
       });
   }
 
-  getUser(): Observable<any> {
-    return this.firestore.collection('users').snapshotChanges();
-  }
-
-  deleteUser(user: User) {
-    delete user.uid;
-    this.firestore.doc('policies/' + user.uid).update(user);
-  }
-
+  /**
+   * Retorna informações sobre o endereço baseado no CEP informado.
+   * @param cep Número do CEP fornecido pelo usuário
+   */
   getAddress(cep: string): Observable<Address> {
     return this.http.get<Address>(`https://viacep.com.br/ws/${cep}/json/`);
   }
 
+  /**
+   * Realiza o login via plataformas: E-Mail, Google, Facebook
+   * @param type Plataforma usada para realizar o login
+   */
   loginPlatforms(type: string) {
     console.log(type);
 
@@ -89,25 +98,34 @@ export class AuthService {
     }
   }
 
-  // Auth logic to run auth providers
+  /**
+   * Abre o modal de login usando a plataforma selecionada
+   * @param provider Provider de autenticação, de acordo com a plataforma escolhida
+   */
   AuthLogin(provider) {
     return this.auth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(result);
-
-        console.log('You have been successfully logged in!');
+        console.log('Logado!', result);
       })
       .catch((error) => {
         console.log(error);
       });
 
-    //////////////////////////////////////////////////////////////////////////
   }
+
+  /**
+   * Retorna os valores do user
+   */
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
 
+  /**
+   * Realiza o login de um usuário já cadastrado
+   * @param username Username do usuário
+   * @param password Senha do usuário
+   */
   login(username: string, password: string) {
     return this.http
       .post<any>(`/users/authenticate`, { username, password })
@@ -121,6 +139,9 @@ export class AuthService {
       );
   }
 
+  /**
+   * Realiza o logout do usuário
+   */
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
