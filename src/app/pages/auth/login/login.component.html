@@ -2,7 +2,6 @@
   <div class="background__card-login">
     <app-card [card]="card">
       <mat-spinner *ngIf="loading"></mat-spinner>
-      <mat-divider></mat-divider>
       <form autocomplete="off" [formGroup]="form" class="background__form-register">
         <p *ngIf="!loading" class="background__form-login--fields">
 

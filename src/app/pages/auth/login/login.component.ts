@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     debugger;
     this.form;
     try {
-    } catch (error) {}
+    } catch (error) { }
   }
 
   createForm() {

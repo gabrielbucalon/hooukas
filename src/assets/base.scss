@@ -1,14 +1,21 @@
-.message-fields{
-  &--error{
+.message-fields {
+  &--error {
     font-weight: 500;
     color: red;
   }
 
-  &--sucess{
+  &--sucess {
     color: green;
   }
 
-  &--warning{
+  &--warning {
     color: yellow;
   }
 }
+
+$laptop: 1024px;
+$laptop-L: 1440px;
+$tablet: 768px;
+$mobile-L: 425px;
+$mobile-M: 375px;
+$mobile-S: 320px;

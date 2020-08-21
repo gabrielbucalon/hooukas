@@ -17,10 +17,6 @@
     }
   }
 
-  mat-divider {
-    margin-bottom: 1000px;
-  }
-
   &__footer-btns {
     &--btn-create-account {
       margin-right: 1em;
@@ -67,5 +63,61 @@ app-card {
   a {
     color: #795548;
     margin: 10px;
+  }
+}
+
+@media (min-width: $laptop) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 70vw;
+        height: 100vh;
+      }
+    }
+  }
+}
+
+@media (min-width: $laptop-L) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 70vw;
+        height: 80vh;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile-L) {
+  .background {
+    display: flex;
+    justify-content: center;
+    &__peoples-conversation {
+      &--peoples {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 60vw;
+        height: 85vh;
+      }
+    }
+  }
+}
+
+@media (max-width: $laptop-L) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 70vw;
+        height: 100vh;
+      }
+    }
   }
 }
