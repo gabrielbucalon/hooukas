@@ -106,6 +106,14 @@ export class AuthService {
     return this.auth
       .signInWithPopup(provider)
       .then((result) => {
+
+        const userValue: User = {
+          email: result.additionalUserInfo.profile['email'],
+          name: result.additionalUserInfo.profile['name'],
+          uid: ''
+        }
+
+        this.saveUser(userValue)
         console.log('Logado!', result);
         this.router.navigateByUrl('');
       })
