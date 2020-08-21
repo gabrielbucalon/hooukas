@@ -64,6 +64,9 @@ app-card {
     color: #795548;
     margin: 10px;
   }
+  .reset-password{
+    cursor: pointer;
+  }
 }
 
 @media (min-width: $laptop) {

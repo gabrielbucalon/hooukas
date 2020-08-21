@@ -79,19 +79,6 @@ export class LoginComponent implements OnInit {
 
   validate(type: string) {
     this.authService.loginPlatforms(type);
-    // if (type !== 'email') {
-    // this.authService.loginPlatforms(type);
-    // } else if(type === 'email' && this.form.valid) {
-    // this.authService.loginPlatforms('email');
-    //  this.authService.login(
-    //    this.form.get('email').value,
-    //    this.form.get('password').value
-    //  );
-
-    // }
-    // else {
-    //   this.isEmail = true;
-    // }
   }
 
   get f() {
