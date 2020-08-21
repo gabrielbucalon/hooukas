@@ -1,12 +1,9 @@
 @import "src/assets/base.scss";
 
 .background {
-  height: 100vh;
-  width: 100%;
-  background-image: url("https://us.123rf.com/450wm/alxyzt/alxyzt1712/alxyzt171200042/90996098-seamless-pattern-of-burgers-background-for-fast-food-packing-poster-.jpg?ver=6");
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  flex-direction: row-reverse;
 
   &__form-login {
     display: flex;
@@ -20,16 +17,17 @@
     }
   }
 
-  mat-divider {
-    margin-bottom: 1000px;
-  }
-
   &__footer-btns {
     &--btn-create-account {
       margin-right: 1em;
       border: 1px solid #795548;
       color: #795548;
     }
+  }
+
+  &__peoples-conversation--peoples {
+    width: 65vw;
+    height: 90vh;
   }
 }
 
@@ -47,9 +45,9 @@
   }
 }
 
-.credentials{
-   display: flex;
-   flex-direction: column;
+.credentials {
+  display: flex;
+  flex-direction: column;
   align-content: center;
 }
 
@@ -71,3 +69,58 @@ app-card {
   }
 }
 
+@media (min-width: $laptop) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 70vw;
+        height: 100vh;
+      }
+    }
+  }
+}
+
+@media (min-width: $laptop-L) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 70vw;
+        height: 80vh;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile-L) {
+  .background {
+    display: flex;
+    justify-content: center;
+    &__peoples-conversation {
+      &--peoples {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 60vw;
+        height: 85vh;
+      }
+    }
+  }
+}
+
+@media (max-width: $laptop-L) {
+  .background {
+    &__peoples-conversation {
+      &--peoples {
+        width: 70vw;
+        height: 100vh;
+      }
+    }
+  }
+}
