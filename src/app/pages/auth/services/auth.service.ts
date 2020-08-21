@@ -107,6 +107,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         console.log('Logado!', result);
+        this.router.navigateByUrl('');
       })
       .catch((error) => {
         console.log(error);
