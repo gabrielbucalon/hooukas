@@ -87,7 +87,7 @@ export class RegisterComponent extends MessageComponent {
         email: this.f.email.value,
         uid: ""
       };
-      this.authService.signupUser(this.user, this.f.email.value, this.f.password.value).then(async () => {
+      this.authService.signInUser(this.user, this.f.email.value, this.f.password.value).then(async () => {
         this.loading = true;
         this.openSnackBar(`Usuário criado com sucesso \nSeja bem-vindo(a) :D`, "OK", 5000);
         this.loading = false;
