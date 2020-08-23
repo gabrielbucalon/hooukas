@@ -1,9 +1,14 @@
 <main>
-  <section>
+  <section class="container">
     <app-card [card]='card'>
-      <div class="name-email"></div>
-      <div class="address"></div>
-
+      <div class="row">
+        <div class="col name-email">
+          <h1>Dados pessoais</h1>
+        </div>
+        <div class="col address">
+          <h1>Endereço</h1>
+        </div>
+      </div>
       <footer class="manage-buttons"></footer>
     </app-card>
   </section>
