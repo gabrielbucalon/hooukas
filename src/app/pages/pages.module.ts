@@ -5,16 +5,17 @@ import { AuthModule } from '@/pages/auth/auth.module';
 import { ProductsModule } from './products/products.module';
 import { HomeModule } from './home/home.module';
 import { CartComponent } from './cart/cart.component';
-import { ConfigUserComponent } from './config-user/config-user.component';
+import { ConfigUserModule } from './config-user/config-user.module';
 
 @NgModule({
-  declarations: [CartComponent, ConfigUserComponent],
+  declarations: [CartComponent],
   imports: [
     CommonModule,
     SharedModule,
     AuthModule,
     HomeModule,
-    ProductsModule
+    ProductsModule,
+    ConfigUserModule
   ]
 })
 export class PagesModule { }

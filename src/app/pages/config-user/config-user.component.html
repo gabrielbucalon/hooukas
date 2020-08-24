@@ -1,15 +1,63 @@
 <main>
   <section class="container">
     <app-card [card]='card'>
-      <div class="row">
+
+      <form formGroup='user' class="row">
         <div class="col name-email">
-          <h1>Dados pessoais</h1>
+          <h5>Dados pessoais</h5>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input name="name" type="text" matInput placeholder="João da Silva" alt="Nome">
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input name="email" type="email" matInput placeholder="joao@email.com" alt="E-mail">
+          </mat-form-field>
+
         </div>
         <div class="col address">
-          <h1>Endereço</h1>
+          <h5>Endereço</h5>
+
+          <mat-form-field appearance="outline">
+            <mat-label>CEP</mat-label>
+            <input name="zipcode" type="text" matInput placeholder="13185090" alt="CEP">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Rua</mat-label>
+            <input name="street" type="text" matInput placeholder="Rua manaus" alt="Rua">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Bairro</mat-label>
+            <input name="neighborhood" type="text" matInput placeholder="Jardim Nova américa" alt="Bairro">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Número</mat-label>
+            <input name="number" type="number" matInput placeholder="42" alt="Número">
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <input name="city" type="text" matInput placeholder="Hortolândia" alt="Cidade">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Estado</mat-label>
+            <input name="state" type="text" matInput placeholder="Jardim Nova américa" alt="bairro">
+          </mat-form-field>
+
         </div>
-      </div>
-      <footer class="manage-buttons"></footer>
+      </form>
+      <footer class="container__manage-buttons">
+        <button mat-stroked-button type="submit">Alterar</button>
+        <button mat-stroked-button color="warn" type="button">Cancelar</button>
+      </footer>
     </app-card>
   </section>
 </main>

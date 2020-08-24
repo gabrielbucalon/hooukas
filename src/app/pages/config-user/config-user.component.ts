@@ -15,6 +15,7 @@ export class ConfigUserComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // debugger;
     this.user = JSON.parse(localStorage.getItem("currentUser"));
     this.card = this.mountCard();
   }
