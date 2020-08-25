@@ -3,7 +3,7 @@
     <app-card [card]='card'>
 
       <form formGroup='user' class="row">
-        <div class="col name-email">
+        <div class="name-email-and-address">
           <h5>Dados pessoais</h5>
 
           <mat-form-field appearance="outline">
@@ -17,8 +17,6 @@
             <input name="email" type="email" matInput placeholder="joao@email.com" alt="E-mail">
           </mat-form-field>
 
-        </div>
-        <div class="col address">
           <h5>Endereço</h5>
 
           <mat-form-field appearance="outline">
@@ -53,10 +51,17 @@
           </mat-form-field>
 
         </div>
+
       </form>
       <footer class="container__manage-buttons">
-        <button mat-stroked-button type="submit">Alterar</button>
-        <button mat-stroked-button color="warn" type="button">Cancelar</button>
+        <button class="container__manage-buttons--change" mat-stroked-button type="submit">
+          <mat-icon>published_with_changes</mat-icon>
+          Alterar
+        </button>
+        <button class="container__manage-buttons" mat-stroked-button color="warn" type="button">
+          <mat-icon>cancel</mat-icon>
+          Cancelar
+        </button>
       </footer>
     </app-card>
   </section>

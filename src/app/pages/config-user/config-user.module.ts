@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '@/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatIconModule
   ]
 })
 export class ConfigUserModule { }

@@ -1,6 +1,12 @@
 .container {
+  mat-form-field {
+    margin-left: 1em;
+  }
   &__manage-buttons {
     display: flex;
     justify-content: flex-end;
+    &--change {
+      margin-right: 1em;
+    }
   }
 }

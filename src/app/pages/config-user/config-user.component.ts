@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../auth/model/User';
 import { Card } from '@/shared/card/model/Card';
+import { Form } from '@angular/forms';
 
 @Component({
   selector: 'app-config-user',
@@ -11,11 +12,11 @@ export class ConfigUserComponent implements OnInit {
 
   user: User;
   card: Card;
+  form: Form;
 
   constructor() { }
 
   ngOnInit(): void {
-    // debugger;
     this.user = JSON.parse(localStorage.getItem("currentUser"));
     this.card = this.mountCard();
   }
