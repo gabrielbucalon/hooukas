@@ -14,11 +14,14 @@ export class ConfigUserComponent implements OnInit {
   card: Card;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+
+  }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("currentUser"));
     this.card = this.mountCard();
+    this.createForm();
   }
 
   mountCard(): Card {
@@ -29,27 +32,40 @@ export class ConfigUserComponent implements OnInit {
   }
 
   createForm() {
+    debugger;
     this.form = this.fb.group({
       name: [
-        '',
+        this.user.name ? this.user.name : '',
         Validators.compose([Validators.required, Validators.minLength(12)]),
       ],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(6)]),
-      ],
+      email: [
+        this.user.email ? this.user.email : '',
+        Validators.compose([Validators.required, Validators.email])],
       zipcode: [
-        '',
+        this.user.address.cep ? this.user.address.cep : '',
         Validators.compose([Validators.required, Validators.minLength(8)]),
       ],
-      address: ['', Validators.required],
-      neighborhood: ['', Validators.required],
-      city: ['', Validators.required],
+      address: [
+        this.user.address.logradouro ? this.user.address.logradouro : '',
+        Validators.required],
+      neighborhood: [
+        this.user.address.bairro ? this.user.address.bairro : '',
+        Validators.required],
+      city: [
+        this.user.address.localidade ? this.user.address.localidade : '',
+        Validators.required],
       number: ['', Validators.required],
-      complement: ['', Validators.required],
-      uf: [''],
+      uf: [
+        this.user.address.uf ?
+          this.user.address.uf : ''],
+      street: [this.user.address.logradouro ? this.user.address.logradouro : '']
     });
+    console.log(this.form.controls)
+  }
+
+
+  get f() {
+    return this.form.controls;
   }
 
 }
