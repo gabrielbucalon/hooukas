@@ -32,8 +32,6 @@ export class ConfigUserComponent implements OnInit {
   }
 
   createForm() {
-    // debugger;
-    console.log(this.user.name ? this.user.name : '');
     this.form = this.fb.group({
       name: [
         this.user.name ? this.user.name : '',
@@ -69,7 +67,7 @@ export class ConfigUserComponent implements OnInit {
   }
 
   submitFormConfig() {
-    console.log("form");
+
   }
 
 }
