@@ -2,36 +2,37 @@
   <section class="container">
     <app-card [card]='card'>
 
-      <form [formGroup]="form" class="container row">
+      <form [formGroup]="form" (ngSubmit)="submitFormConfig()" class="container row">
         <div class="name-email-and-address">
           <h5>Dados pessoais</h5>
 
           <mat-form-field class="col-lg-6" appearance="outline">
             <mat-label>Nome</mat-label>
-            <input formGroupName="name" name="name" type="text" matInput placeholder="João da Silva" alt="Nome">
+
+            <input formControlName="name" name="name" type="text" matInput placeholder="João da Silva" alt="Nome">
           </mat-form-field>
 
 
           <mat-form-field class="col-lg-6" appearance="outline">
             <mat-label>E-mail</mat-label>
-            <input formGroupName="email" name="email" type="email" matInput placeholder="joao@email.com" alt="E-mail">
+            <input formControlName="email" name="email" type="email" matInput placeholder="joao@email.com" alt="E-mail">
           </mat-form-field>
 
           <h5>Endereço</h5>
 
           <mat-form-field class="col-6" appearance="outline">
             <mat-label>CEP</mat-label>
-            <input formGroupName="zipcode" name="zipcode" type="text" matInput placeholder="13185090" alt="CEP">
+            <input formControlName="zipcode" name="zipcode" type="text" matInput placeholder="13185090" alt="CEP">
           </mat-form-field>
 
           <mat-form-field class="col-6" appearance="outline">
             <mat-label>Rua</mat-label>
-            <input formGroupName="street" name="street" type="text" matInput placeholder="Rua manaus" alt="Rua">
+            <input formControlName="street" name="street" type="text" matInput placeholder="Rua manaus" alt="Rua">
           </mat-form-field>
 
           <mat-form-field class="col-6" appearance="outline">
             <mat-label>Bairro</mat-label>
-            <input formGroupName="neighborhood" name="neighborhood" type="text" matInput
+            <input formControlName="neighborhood" name="neighborhood" type="text" matInput
               placeholder="Jardim Nova américa" alt="Bairro">
           </mat-form-field>
 
@@ -43,12 +44,13 @@
 
           <mat-form-field class="col-6" appearance="outline">
             <mat-label>Cidade</mat-label>
-            <input formGroupName="city" name="city" type="text" matInput placeholder="Hortolândia" alt="Cidade">
+            <input formControlName="city" name="city" type="text" matInput placeholder="Hortolândia" alt="Cidade">
           </mat-form-field>
 
           <mat-form-field class="col-6" appearance="outline">
             <mat-label>Estado</mat-label>
-            <input formGroupName="uf" name="state" type="text" matInput placeholder="Jardim Nova américa" alt="bairro">
+            <input formControlName="uf" name="state" type="text" matInput placeholder="Jardim Nova américa"
+              alt="bairro">
           </mat-form-field>
 
         </div>

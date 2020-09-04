@@ -32,7 +32,8 @@ export class ConfigUserComponent implements OnInit {
   }
 
   createForm() {
-    debugger;
+    // debugger;
+    console.log(this.user.name ? this.user.name : '');
     this.form = this.fb.group({
       name: [
         this.user.name ? this.user.name : '',
@@ -60,12 +61,15 @@ export class ConfigUserComponent implements OnInit {
           this.user.address.uf : ''],
       street: [this.user.address.logradouro ? this.user.address.logradouro : '']
     });
-    console.log(this.form.controls)
   }
 
 
   get f() {
     return this.form.controls;
+  }
+
+  submitFormConfig() {
+    console.log("form");
   }
 
 }
