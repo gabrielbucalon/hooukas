@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-// import { Address } from '../model/User';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Address, User } from '@/pages/auth/model/User';
-// import { AngularFireAuth2 } from 'angularfire2/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { map } from 'rxjs/operators';
@@ -30,11 +28,12 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  async signupUser(userParams: User, email: string, password: string) {
+  signupUser(userParams: User, email: string, password: string) {
     return this.auth
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        return this.auth
+      .then(async () => {
+        debugger;
+        return await this.auth
           .signInWithEmailAndPassword(email, password)
           .then((authUser) => {
             userParams.uid = authUser.user.uid;
@@ -58,9 +57,11 @@ export class AuthService {
     return this.firestore.collection('users').snapshotChanges();
   }
 
-  deleteUser(user: User) {
-    delete user.uid;
-    this.firestore.doc('policies/' + user.uid).update(user);
+  async updateUser(user) {
+    const { $key } = user;
+    delete user.$key;
+    const userChanged = user;
+    await this.firestore.doc(`users/${$key}`).update(userChanged);
   }
 
   getAddress(cep: string): Observable<Address> {
@@ -124,5 +125,22 @@ export class AuthService {
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+  }
+
+  getUserById(user: User, uid: String) {
+    let result;
+    let itemsCollection = this.firestore.collection<any>('users');
+    itemsCollection.snapshotChanges()
+      .subscribe(actions => {
+
+        actions.forEach(action => {
+          if (action.payload.doc.data().uid === uid) {
+            result = { $key: action.payload.doc.id, ...action.payload.doc.data() };
+          }
+        });
+        this.updateUser(result).then(() => {
+
+        });
+      });
   }
 }

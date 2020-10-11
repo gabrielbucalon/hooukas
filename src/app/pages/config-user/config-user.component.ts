@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../auth/model/User';
 import { Card } from '@/shared/card/model/Card';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-config-user',
@@ -14,7 +15,7 @@ export class ConfigUserComponent implements OnInit {
   card: Card;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
 
   }
 
@@ -40,24 +41,27 @@ export class ConfigUserComponent implements OnInit {
       email: [
         this.user.email ? this.user.email : '',
         Validators.compose([Validators.required, Validators.email])],
-      zipcode: [
-        this.user.address.cep ? this.user.address.cep : '',
-        Validators.compose([Validators.required, Validators.minLength(8)]),
-      ],
-      address: [
-        this.user.address.logradouro ? this.user.address.logradouro : '',
-        Validators.required],
-      neighborhood: [
-        this.user.address.bairro ? this.user.address.bairro : '',
-        Validators.required],
-      city: [
-        this.user.address.localidade ? this.user.address.localidade : '',
-        Validators.required],
-      number: ['', Validators.required],
-      uf: [
-        this.user.address.uf ?
-          this.user.address.uf : ''],
-      street: [this.user.address.logradouro ? this.user.address.logradouro : '']
+      address: this.fb.group({
+        zipcode: [
+          this.user.address.cep ? this.user.address.cep : '',
+          Validators.compose([Validators.required, Validators.minLength(8)]),
+        ],
+        address: [
+          this.user.address.logradouro ? this.user.address.logradouro : '',
+          Validators.required],
+        neighborhood: [
+          this.user.address.bairro ? this.user.address.bairro : '',
+          Validators.required],
+        city: [
+          this.user.address.localidade ? this.user.address.localidade : '',
+          Validators.required],
+        number: ['', Validators.required],
+        uf: [
+          this.user.address.uf ?
+            this.user.address.uf : ''],
+        street: [this.user.address.logradouro ? this.user.address.logradouro : ''],
+        complement: [this.user.address.complemento ? this.user.address.complemento : '']
+      }),
     });
   }
 
@@ -66,8 +70,13 @@ export class ConfigUserComponent implements OnInit {
     return this.form.controls;
   }
 
-  submitFormConfig() {
+  get address() {
+    return this.form.get('address');
+  }
 
+  submitFormConfig() {
+    console.log(this.form.value);
+    this.authService.getUserById(this.form.value, this.user.uid);
   }
 
 }

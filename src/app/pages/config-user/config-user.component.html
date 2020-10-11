@@ -20,52 +20,61 @@
 
           <h5>Endereço</h5>
 
-          <mat-form-field class="col-6" appearance="outline">
-            <mat-label>CEP</mat-label>
-            <input formControlName="zipcode" name="zipcode" type="text" matInput placeholder="13185090" alt="CEP">
-          </mat-form-field>
+          <form [formGroup]="address">
+            <mat-form-field class="col-6" appearance="outline">
+              <mat-label>CEP</mat-label>
+              <input formControlName="zipcode" name="zipcode" type="text" matInput placeholder="13185090" alt="CEP">
+            </mat-form-field>
 
-          <mat-form-field class="col-6" appearance="outline">
-            <mat-label>Rua</mat-label>
-            <input formControlName="street" name="street" type="text" matInput placeholder="Rua manaus" alt="Rua">
-          </mat-form-field>
+            <mat-form-field class="col-6" appearance="outline">
+              <mat-label>Rua</mat-label>
+              <input formControlName="street" name="street" type="text" matInput placeholder="Rua manaus" alt="Rua">
+            </mat-form-field>
 
-          <mat-form-field class="col-6" appearance="outline">
-            <mat-label>Bairro</mat-label>
-            <input formControlName="neighborhood" name="neighborhood" type="text" matInput
-              placeholder="Jardim Nova américa" alt="Bairro">
-          </mat-form-field>
+            <mat-form-field class="col-6" appearance="outline">
+              <mat-label>Bairro</mat-label>
+              <input formControlName="neighborhood" name="neighborhood" type="text" matInput
+                placeholder="Jardim Nova américa" alt="Bairro">
+            </mat-form-field>
 
-          <mat-form-field class="col-6" appearance="outline">
-            <mat-label>Número</mat-label>
-            <input name="number" type="number" matInput placeholder="42" alt="Número">
-          </mat-form-field>
+            <mat-form-field class="col-6" appearance="outline">
+              <mat-label>Número</mat-label>
+              <input name="number" formControlName="number" type="number" matInput placeholder="42" alt="Número">
+            </mat-form-field>
 
+            <mat-form-field class="col-6" appearance="outline">
+              <mat-label>Complemento</mat-label>
+              <input name="complement" formControlName="complement" type="text" matInput placeholder="Casa"
+                alt="Complemento">
+            </mat-form-field>
 
-          <mat-form-field class="col-6" appearance="outline">
-            <mat-label>Cidade</mat-label>
-            <input formControlName="city" name="city" type="text" matInput placeholder="Hortolândia" alt="Cidade">
-          </mat-form-field>
+            <mat-form-field class="col-6" appearance="outline">
+              <mat-label>Cidade</mat-label>
+              <input formControlName="city" name="city" type="text" matInput placeholder="Hortolândia" alt="Cidade">
+            </mat-form-field>
 
-          <mat-form-field class="col-6" appearance="outline">
-            <mat-label>Estado</mat-label>
-            <input formControlName="uf" name="state" type="text" matInput placeholder="Jardim Nova américa"
-              alt="bairro">
-          </mat-form-field>
+            <mat-form-field class="col-6" appearance="outline">
+              <mat-label>Estado</mat-label>
+              <input formControlName="uf" name="state" type="text" matInput placeholder="Jardim Nova américa"
+                alt="bairro">
+            </mat-form-field>
+          </form>
+
 
         </div>
+        <footer class="container__manage-buttons">
+          <button class="container__manage-buttons--change" mat-stroked-button type="submit">
+            <mat-icon>published_with_changes</mat-icon>
+            Alterar
+          </button>
 
+          <button class="container__manage-buttons" mat-stroked-button color="warn" type="button">
+            <mat-icon>cancel</mat-icon>
+            Cancelar
+          </button>
+        </footer>
       </form>
-      <footer class="container__manage-buttons">
-        <button class="container__manage-buttons--change" mat-stroked-button type="submit">
-          <mat-icon>published_with_changes</mat-icon>
-          Alterar
-        </button>
-        <button class="container__manage-buttons" mat-stroked-button color="warn" type="button">
-          <mat-icon>cancel</mat-icon>
-          Cancelar
-        </button>
-      </footer>
+
     </app-card>
   </section>
 </main>
