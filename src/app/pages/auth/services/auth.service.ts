@@ -57,10 +57,7 @@ export class AuthService {
     return this.firestore.collection('users').snapshotChanges();
   }
 
-  async updateUser(user) {
-    const { $key } = user;
-    delete user.$key;
-    const userChanged = user;
+  async updateUser($key, userChanged) {
     await this.firestore.doc(`users/${$key}`).update(userChanged);
   }
 
@@ -102,8 +99,6 @@ export class AuthService {
       .catch((error) => {
         console.log(error);
       });
-
-    //////////////////////////////////////////////////////////////////////////
   }
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
@@ -138,8 +133,8 @@ export class AuthService {
             result = { $key: action.payload.doc.id, ...action.payload.doc.data() };
           }
         });
-        this.updateUser(result).then(() => {
-
+        this.updateUser(result.$key, user).then(() => {
+          this.router.navigateByUrl('/');
         });
       });
   }

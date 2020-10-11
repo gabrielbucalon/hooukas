@@ -75,7 +75,6 @@ export class ConfigUserComponent implements OnInit {
   }
 
   submitFormConfig() {
-    console.log(this.form.value);
     this.authService.getUserById(this.form.value, this.user.uid);
   }
 
